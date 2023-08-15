@@ -1,0 +1,278 @@
+{
+  "name" : "e21010",
+  "detectors" : [
+    {
+      "name" : "U1",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U1.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U1F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U1B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "U2",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U2.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U2F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U2B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "U3",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U3.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U3F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U3B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "U4",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U4.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U4F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U4B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "U5",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U5.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U5F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U5B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "U6",
+      "file" : "AUW1_60_00.json",
+      "calibration" : "U6.cal",
+      "reverseFront" : true,
+      "reverseBack" : true,
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "frontMapping" : {
+        "prefix" : "U6F",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      },
+      "backMapping" : {
+        "prefix" : "U6B",
+        "multiplicity" : "",
+        "segment" : "I",
+        "adc" : "_E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P1",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P1.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P1E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P2",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P2.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P2E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P3",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P3.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P3E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P4",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P4.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P4E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P5",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P1.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P5E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "P6",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "P6.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "P6E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "G1",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "G1.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "G1E",
+        "tdc" : "-DEAD-"
+      }
+    },
+    {
+      "name" : "G2",
+      "file" : "AUPAD_1458_00.json",
+      "calibration" : "G2.cal",
+      "position" : {"x":"31 mm", "y":"0 mm", "z":"0 mm"},
+      "normal" : {"x":"-1 mm", "y":"0 mm", "z":"0 mm"},
+      "orientation" : {"x":"0 mm", "y":"1 mm", "z":"0 mm"},
+      "mapping": {
+        "adc": "G2E",
+        "tdc" : "-DEAD-"
+      }
+    }
+  ],
+  "telescopes":[
+    {
+      "front": "U1",
+      "dn": "4.8mm",
+      "back": "P1"
+     },
+    {
+      "front": "U2",
+      "dn": "4.8mm",
+      "back": "P2"
+      },
+      {
+      "front": "U3",
+      "dn": "4.8mm",
+      "back": "P3"
+      },
+      {
+      "front": "U4",
+      "dn": "4.8mm",
+      "back": "P4"
+      },
+    {
+      "front": "U5",
+      "dn": "4.8mm",
+      "back": "P5"
+      },
+    {
+      "front": "U6",
+      "dn": "4.8mm",
+      "back": "P6"
+      }
+  ]
+}
+

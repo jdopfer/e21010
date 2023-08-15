@@ -1,0 +1,5 @@
+{
+  "beamEnergy" : "30keV",
+  "position"    : {"x" :  "0mm", "y" :  "0mm", "z" :  "-10cm"},
+  "momentumDir" : {"x" :  "0mm", "y" :  "0mm", "z" :  "1mm"}
+}

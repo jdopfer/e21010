@@ -1,0 +1,807 @@
+"Start time
+(EDT)";"Duration";"Run no.";"Run type";"Beam";"Beam energy";"Target";"Shifters";"Comments (given at start of run,
+if not otherwise specified)";"Triggers" 
+"2023-06-20
+16:54:10";"0:20:46";"001";"CALIBRATION";"3a";"-";"P6";EJ, LS, AA, JD, OT;"241Am (~1900 Hz) 244Cm (~428 Hz)
+239Pu (~6371 Hz) -- source from
+1987, rates corrected for half-life
+from safety office source log";"PADS(0)" 
+"2023-06-20
+17:15:37";"0:09:56";"002";"CALIBRATION";"3a";"-";"P3, P4";EJ, LS, JD, OT;"";"PADS(0)" 
+"2023-06-20
+17:26:14";"0:04:41";"003";"CALIBRATION";"3a";"-";"P2";EJ, LS, OT;"";"PADS(0)" 
+"2023-06-21
+16:01:52";"0:47:08";"004";"CALIBRATION";"3a";"-";"P1, U2";EJ, JD, LS, OT;"END-OF-RUN COMMENT BY EJ, JD, LS,
+OT: germaniums plugged in during
+run. may have to redo, but now a
+gamma source is placed close to the
+germaniums and we can record that as
+well";"DET2(0), PADS(0)" 
+"2023-06-21
+17:06:32";"0:05:26";"005";"CALIBRATION";"3a";"-";"P1";EJ, AA, LS, OT;"";"PADS(0)" 
+"2023-06-21
+18:48:23";"1:43:52";"006";"CALIBRATION";"3a";"-";"U1, U2";EJ, AA, LS, OT;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+20:32:48";"0:15:17";"007";"CALIBRATION";"3a";"-";"U3, U4";EJ, AA, LS, OT;"END-OF-RUN COMMENT BY EJ, AA, LS,
+OT: forgot about gain, shaping time,
+pole zero. stopping";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+21:37:56";"0:19:40";"008";"CALIBRATION";"3a";"-";"U1, U2";EJ, AA, OT;"All shapes except for germaniums
+have now been configured. See elog
+entry #51";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+21:58:28";"0:19:16";"009";"CALIBRATION";"3a";"-";"U3, U4";EJ, OT;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+22:19:54";"0:34:42";"010";"CALIBRATION";"3a";"-";"U5";EJ, OT;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+22:56:13";"0:22:09";"011";"CALIBRATION";"3a";"-";"U6";EJ, OT;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-21
+23:27:23";"0:14:52";"012";"PULSER";"Pulser";"-";"U6";EJ, OT;"END-OF-RUN COMMENT BY EJ, OT: 3a
+source in chamber also, pointing at
+U6";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-22
+17:01:59";"0:03:14";"013";"CALIBRATION";"152Eu";"-";"HPGES";EJ, LS, JD, OT;"Energy calibration. Source placed on
+top of chamber between two
+germaniums";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+17:20:16";"0:37:22";"014";"CALIBRATION";"152Eu";"-";"HPGES";EJ, LS, OT;"Resuming energy calibration --
+stopped briefly due to gas cell guys
+wanting to discuss iminent stable
+beam tuning. Source placed on top of
+chamber between two germaniums.
+EXTRA COMMENT 2.9 MINUTES INTO RUN
+BY EJ, LS, OT: Pulser had been left
+on throughout previous two germanium
+calibration runs";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+18:01:07";"0:31:00";"015";"CALIBRATION";"152Eu";"-";"HPGES";EJ, LS, OT;"Increased the gain on the HPGE
+shaper to optimize the dynamic range
+to go roughly to 3 MeV. 121 keV
+152Eu line is now equally intense in
+both detectors.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+18:37:29";"0:01:14";"016";"TEST";"-";"-";"-";EJ, OT;"Lowered ADC thresholds to 10 on all
+channels on all modules to find
+individual ADC thresholds.
+END-OF-
+RUN COMMENT BY EJ, OT: Lowered ADC
+thresholds to 10 on all channels on
+all modules to find individual ADC
+thresholds.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+19:19:56";"0:00:19";"017";"TEST";"-";"-";"-";EJ, OT;"Preliminary ADC thresholds set. Some
+still need a bit of tweaking
+END-OF-
+RUN COMMENT BY EJ, OT: Preliminary
+ADC thresholds set. Some still need
+a bit of tweaking";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+20:22:19";"N/A";" ";" ";"-";"-";"-";EJ, LS, OT;"IN-BETWEEN-RUN COMMENT: Disregard
+the previous run and the comments on
+it! The ADC thresholds were
+determined from unpacked data, and
+the unpacked data mixes up the
+channel orderings (by design)";"" 
+"2023-06-22
+20:23:04";"0:00:02";"018";"CALIBRATION";"Background";"-";"HPGES";EJ, LS, OT;"Done optimizing ADC thresholds and
+trigger thresholds on all detectors.
+Starting a background run.
+END-OF-
+RUN COMMENT BY EJ, LS, OT: Done
+optimizing ADC thresholds and
+trigger thresholds on all detectors.
+Starting a background run.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+20:23:21";"0:23:26";"019";"CALIBRATION";"Background";"-";"HPGES";EJ, LS, OT;"Done optimizing ADC thresholds and
+trigger thresholds on all detectors.
+Starting a background run.
+END-OF-
+RUN COMMENT BY EJ, LS, OT: Done
+optimizing ADC thresholds and
+trigger thresholds on all detectors.
+Starting a background run.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-22
+20:49:26";"N/A";" ";" ";"-";"-";"-";EJ, LS, OT;"IN-BETWEEN-RUN COMMENT: We refrain
+from leaving the germaniums
+unsupervised overnight. Stopping the
+background run";"" 
+"2023-06-23
+16:27:35";"0:01:55";"020";"PULSER";"Pulser";"-";"Silicons";CW, LS, JD, LW, MM, JSN, EJ, HF;"EXTRA COMMENT 1.2 MINUTES INTO RUN
+BY CW, LS, JD, LW, MM, JSN, EJ, HF:
+TDC alignment run with pulser on all
+detectors. 1 kHz, Amplitude 0.2 V
+(1000), rise time 10 ns, tau 40 us.
+Delay between ch0 and ch1 16 ns.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-23
+16:37:10";"0:49:29";"021";"CALIBRATION";"152Eu";"-";"HPGES";CW, LS, JD, LW, MM, JSN, EJ, HF;"Source on top of tube (to very high
+precision!) between two germaniums";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-23
+17:27:56";"16:27:51";"022";"CALIBRATION";"Background";"-";"HPGES";LS, LW, MM, JSN, EJ, HF;"long run overnight";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-24
+15:14:19";"8:43:33";"023";"CALIBRATION";"Background";"-";"HPGES";MM, JSN, EJ, HF;"EXTRA COMMENT 1.0 MINUTES INTO RUN
+BY MM, JSN, EJ, HF: work on network
+connectivity has been carried out
+and we are now resuming a background
+run on the germaniums (all triggers
+enabled)";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+00:00:24";"0:11:54";"024";"RUN";"25Al";"30 keV";"C";EJ, CS, SS;"Chandana and Stefan has optimised
+the beam to a point where they want
+to try to get it into the chamber.
+26Si contimant in beam also. Our
+Faraday cup is in the chamber and is
+intended to stay there for the
+entire experiment.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+00:27:48";"N/A";" ";" ";"-";"-";"-";EJ, CS, SS;"IN-BETWEEN-RUN COMMENT: Stopped the
+run after 12 minutes.
+We were
+looking specifically for gamma lines
+with energies 829 (26Si), 1611
+(25Al) and 1622 (26Si) keV in our
+online analysis, as Stefan and
+Chandana have seen these lines in
+their gamma detector just after the
+mass separating magnet.
+The lines
+were not sufficiently intense in our
+gamma singles spectra.
+We can do
+beta-gated gammas on the recorded
+data offline tomorrow, give Stefan
+and Chandana a rough measure of the
+yield and then implement the offline
+analysis in our online analysis so
+we have this type of measure ready
+when 22Al comes around.";" " 
+"2023-06-25
+09:58:45";"8:57:10";"025";"CALIBRATION";"Background";"-";"-";JSN, HF, MM;"Background run
+EXTRA COMMENT 20.3
+MINUTES INTO RUN BY JSN, HF, MM:
+Background run
+END-OF-RUN COMMENT BY
+LS, EJ: Stop file to unbias and
+rebias germaniums due to remote
+control comms issue";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+19:14:53";"1:57:09";"026";"CALIBRATION";"Background";"-";"-";LS, EJ, JSN;"Background
+END-OF-RUN COMMENT BY LS,
+EJ, JSN: Background";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+22:00:30";"0:44:41";"027";"RUN";"21Mg";"30 keV";"C";LS, EJ, JSN, CW,;"EXTRA COMMENT 0.3 MINUTES INTO RUN
+BY LS, EJ, JSN, CW, HF: .";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+22:54:49";"0:21:53";"028";"RUN";"21Mg";"30 keV";"C";LS, EJ, JSN, CW, HF;"Beam optimised to estimated 500 pps
+inside chamber based on 335 keV
+gamma line";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+23:18:23";"0:01:31";"029";"RUN";"21Mg";"30 keV";"C";LS, EJ, JSN, CW, HF;"EXTRA COMMENT 0.3 MINUTES INTO RUN
+BY LS, EJ, JSN, CW, HF: measuring on
+'beam off'
+END-OF-RUN COMMENT BY LS,
+EJ, JSN, CW, HF: measuring on 'beam
+off'";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+23:32:55";"0:11:42";"030";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+23:44:44";"0:05:30";"031";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF;"EXTRA COMMENT 1.4 MINUTES INTO RUN
+BY LS, EJ, JSN, CW, HF: trying to
+optimise on the chemistry of the gas
+cell. 22Al comes out with some
+multiple of water molecules
+attached. we go from 3 water
+molecules to four and see if it
+improves matters";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+23:50:31";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF;"IN-BETWEEN-RUN COMMENT: going from 4
+water molecules to 5";" " 
+"2023-06-25
+23:54:04";"0:03:15";"032";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"EXTRA COMMENT 0.3 MINUTES INTO RUN
+BY LS, EJ, JSN, CW, HF, LW, MM:
+scratch that. going from 4 water
+molecules to 6";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-25
+23:57:47";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF, LW, MM;"IN-BETWEEN-RUN COMMENT: trying
+aluminum oxide now -- mass 38";" " 
+"2023-06-25
+23:58:01";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF, LW, MM;"IN-BETWEEN-RUN COMMENT: 'now' means
+'in a minute'";"" 
+"2023-06-26
+00:00:37";"0:04:31";"033";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"aluminum oxide
+END-OF-RUN COMMENT BY
+LS, EJ, JSN, CW, HF, LW, MM:
+aluminum oxide";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+00:06:19";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF, LW, MM;"IN-BETWEEN-RUN COMMENT: trying with
+'pure aluminum', mass 22, in a
+minute";"" 
+"2023-06-26
+00:06:24";"0:00:15";"034";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"END-OF-RUN COMMENT BY LS, EJ, JSN,
+CW, HF, LW, MM: bad run";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+00:07:25";"0:01:19";"035";"RUN";"22Al";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"trying with 'pure aluminum', mass
+22, in a minute
+END-OF-RUN COMMENT
+BY LS, EJ, JSN, CW, HF, LW, MM:
+trying with 'pure aluminum', mass
+22, in a minute";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+00:11:22";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF, LW, MM;"IN-BETWEEN-RUN COMMENT: 22Al yields
+were at its maximum with roughly 0.5
+pps during [Al + 3 water molecules +
+1 Hydrogen]. We switch to 21Mg for
+the night -- we saw an estimated 500
+pps previously. Will be good for
+telescope and germanium
+calibrations.";"" 
+"2023-06-26
+00:11:40";"0:02:36";"036";"RUN";"21Mg";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+00:14:23";"N/A";" ";" ";"-";"-";"-";LS, EJ, JSN, CW, HF, LW, MM;"IN-BETWEEN-RUN COMMENT: bad run";" " 
+"2023-06-26
+00:14:30";"7:23:03";"037";"RUN";"21Mg";"30 keV";"C";LS, EJ, JSN, CW, HF, LW, MM;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+07:38:36";"0:58:09";"038";"CALIBRATION";"21Mg";"30 keV";"C";LW, MM;"We run background while Chandanna
+optimizes 22Al in cryo gass cell
+END-OF-RUN COMMENT BY LW, MM: We run
+background while Chandanna optimizes
+22Al in cryo gass cell";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+08:37:30";"0:09:10";"039";"RUN";"21Mg";"30 keV";"C";EJ, JD, HF;"aluminum with 3 water
+EXTRA COMMENT
+0.3 MINUTES INTO RUN BY EJ, JD, HF:
+aluminum with 3 water. beam is 22Al!
+END-OF-RUN COMMENT BY EJ, JD, HF:
+aluminum with 3 water. beam is 22Al!";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+09:00:43";"0:06:56";"040";"RUN";"22Al";"30 keV";"C";EJ, JD, HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+09:36:46";"0:34:14";"041";"CALIBRATION";"Background";"-";"-";EJ, JD, HF, AA;"background while Chandana and co.
+tune on the cryogenic gas cell
+END-
+OF-RUN COMMENT BY EJ, JD, HF, AA:
+background while Chandana and co.
+tune on the cryogenic gas cell";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+10:27:20";"0:57:34";"042";"CALIBRATION";"Background";"-";"-";EJ, JD, HF, AA;"background while Chandana and co.
+tune on the cryogenic gas cell. had
+to disconnect network briefly,
+resuming
+END-OF-RUN COMMENT BY EJ,
+JD, HF, AA: background while
+Chandana and co. tune on the
+cryogenic gas cell. had to
+disconnect network briefly, resuming";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+14:16:00";"0:11:52";"043";"CALIBRATION";"Background";"-";"-";EJ, JD, HF, AA, LS, JSN, CW;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+14:28:01";"0:24:17";"044";"RUN";"21Mg";"30 keV";"C";EJ, JD, HF, AA, LS, JSN, CW;"EXTRA COMMENT 24.3 MINUTES INTO RUN
+BY EJ, JD, HF, AA, LS, JSN, CW: beam
+tuning throughout
+END-OF-RUN COMMENT
+BY EJ, JD, HF, AA, LS, JSN, CW: beam
+tuning throughout";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+14:55:09";"N/A";"045";"RUN";"22Al";"30 keV";"C";EJ, JD, HF, AA, LS, JSN, CW;"22Al out of the cryogenic gas cell
+(previously the room temp gas cell)
+at mass 22 -- no water molecules or
+similar";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+15:24:21";"N/A";" ";" ";"-";"-";"-";EJ, JD, HF, AA, LS, JSN, CW;"IN-BETWEEN-RUN COMMENT: lost power
+on the PC running the data taking -
+file may have been corrupted";" " 
+"2023-06-26
+15:26:20";"0:14:04";"046";"RUN";"22Al";"30 keV";"C";EJ, JD, HF, AA, LS, JSN, CW;"EXTRA COMMENT 0.1 MINUTES INTO RUN
+BY EJ, JD, HF, AA, LS, JSN, CW, MM:
+.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+15:40:53";"1:33:23";"047";"RUN";"22Al";"30 keV";"C";EJ, JD, HF, AA, LS, JSN, CW, MM;"EXTRA COMMENT 32.0 MINUTES INTO RUN
+BY EJ, JD, HF, AA, LS, JSN, CW, MM:
+At 30 min in this file (16:12 local
+time, 22:12 DK time) Chandanna is
+checking the yield, therefore drop
+in rate";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+17:14:36";"1:07:58";"048";"RUN";"22Al";"30 keV";"C";EJ, HF, LS, JSN, CW;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+18:22:48";"1:44:54";"049";"RUN";"22Al";"30 keV";"C";EJ, HF, LS, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+20:07:48";"0:19:21";"050";"RUN";"22Al";"30 keV";"C";EJ, MM, LS, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+20:29:11";"1:29:20";"051";"RUN";"22Al";"30 keV";"C";EJ, LS, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+21:58:40";"0:06:27";"052";"RUN";"22Al";"30 keV";"C";EJ, LS, JSN;"END-OF-RUN COMMENT BY EJ, LS, JSN:
+cavity tripped, few minutes to fix,
+stopping";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+22:24:30";"1:31:13";"053";"CALIBRATION";"Background";"-";"-";EJ, LS, JSN;"background run
+EXTRA COMMENT 5.2
+MINUTES INTO RUN BY EJ, LS, JSN:
+someone has to come in and look at
+fixing the tripped cavity - he will
+arrive in 30 minutes, and the beam
+should be back shortly after that --
+message from beam ops
+END-OF-RUN
+COMMENT BY EJ, LS, JSN: someone has
+to come in and look at fixing the
+tripped cavity - he will arrive in
+30 minutes, and the beam should be
+back shortly after that -- message
+from beam ops";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-26
+23:56:55";"0:01:05";"054";"CALIBRATION";"Background";"-";"-";EJ, LS, LW, HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+00:00:30";"1:18:18";"055";"RUN";"22Al";"30 keV";"C";EJ, LS, LW, HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+01:19:24";"4:30:28";"056";"CALIBRATION";"Background";"-";"-";EJ, LS, LW, HF;"EXTRA COMMENT 0.2 MINUTES INTO RUN
+BY EJ, LS, LW, HF: short stop";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+05:50:17";"3:35:26";"057";"RUN";"22Al";"30 keV";"C";HF, LW;"beam back after 4-5 h break
+END-OF-
+RUN COMMENT BY HF, LW: beam off at
+06.17 for a short while";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+09:25:57";"2:40:31";"058";"RUN";"22Al";"30 keV";"C";HF, LW;"Restart after 3 hours
+EXTRA COMMENT
+0.4 MINUTES INTO RUN BY JSN, JD, CW,
+MM: Restart after 3 hours
+END-OF-RUN
+COMMENT BY JSN, JD, CW, MM: Restart
+after 3 hours";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+12:06:42";"0:12:33";"059";"RUN";"22Al";"30 keV";"C";JSN, JD, CW, MM;"Restart after 2.4 hours
+EXTRA
+COMMENT 0.1 MINUTES INTO RUN BY JSN,
+JD, CW, MM: Restart after 2.4 hours
+END-OF-RUN COMMENT BY JSN, JD, CW,
+MM: Beam stopped";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+12:19:35";"0:34:19";"060";"RUN";"22Al";"30 keV";"C";JSN, JD, CW, MM;"EXTRA COMMENT 0.6 MINUTES INTO RUN
+BY JSN, HF, MM: Restart immediatly
+after beam loss to measure daughters
+END-OF-RUN COMMENT BY JSN, HF, MM:
+Restart immediatly after beam loss
+to measure daughters";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+12:54:06";"0:45:11";"061";"RUN";"22Al";"30 keV";"C";JSN, HF, MM;"We have beam again
+END-OF-RUN
+COMMENT BY JSN, HF, MM: We have beam
+again";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+13:39:42";"0:37:17";"062";"CALIBRATION";"Background";"-";"-";JSN, HF, MM;"No Beam
+END-OF-RUN COMMENT BY JSN,
+HF, MM: No Beam";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+14:17:19";"2:34:20";"063";"RUN";"22Al";"30 keV";"C";JSN, HF, MM;"Beam has returned
+END-OF-RUN COMMENT
+BY JSN, HF, MM: Beam has returned";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+16:51:52";"4:04:47";"064";"RUN";"22Al";"30 keV";"C";JSN, HF, MM;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+20:56:48";"1:19:44";"065";"RUN";"22Al";"30 keV";"C";LS, EJ;"EXTRA COMMENT 30.9 MINUTES INTO RUN
+BY LS, EJ: NOTE ON RUN 064: There
+may have been a small spike or three
+in triggers somewhere between 20:30
+and 21:00 as bias was briefly turned
+off on all channels of the bias
+module containing P6, U5 and U6 due
+to some RC issues";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+22:16:56";"0:00:27";"066";"RUN";"22Al";"30 keV";"C";LS, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+22:17:34";"0:09:51";"067";"RUN";"22Al";"30 keV";"C";LS, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+22:29:13";"1:05:25";"068";"RUN";"22Al";"30 keV";"C";LS, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+23:34:46";"N/A";"069";"RUN";"22Al";"30 keV";"C";LS, EJ;"EXTRA COMMENT 0.1 MINUTES INTO RUN
+BY LS, EJ, LW: .";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-27
+23:47:17";"1:02:05";"070";"RUN";"22Al";"30 keV";"C";LS, EJ, LW;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+00:49:52";"N/A";"071";"RUN";"22Al";"30 keV";"C";LS, EJ, LW;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+01:01:22";"N/A";"072";"RUN";"22Al";"30 keV";"C";LW, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+02:40:15";"3:08:41";"073";"RUN";"22Al";"30 keV";"C";LW, JSN;"Restarting after regaining access to
+AU services. DAQ also crashed (?)
+END-OF-RUN COMMENT BY LW, JSN:
+Restarting after regaining access to
+AU services. DAQ also crashed (?)";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+05:49:40";"2:22:46";"074";"RUN";"22Al";"30 keV";"C";LW, JSN;"Restarting run after 3 hours without
+incident
+END-OF-RUN COMMENT BY LW,
+JSN: Restarting run after 3 hours
+without incident";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+08:13:09";"4:27:35";"075";"CALIBRATION";"Background";"-";"-";LW, JSN;"Beginning to switch beams
+END-OF-RUN
+COMMENT BY LW, JSN: Beginning to
+switch beams";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+12:41:42";"0:05:34";"076";"RUN";"28P";"30 keV";"C";LW, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+12:47:42";"1:26:46";"077";"CALIBRATION";"Background";"-";"-";LW, JSN;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+14:14:57";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ;"IN-BETWEEN-RUN COMMENT: stopping
+background run to optimise trigger
+thresholds (and maybe ADC
+thresholds)";" " 
+"2023-06-28
+15:08:32";"1:38:31";"078";"CALIBRATION";"Background";"-";"-";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+16:47:14";"0:25:21";"079";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+17:12:54";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: Pure 26P --
+mass 26 -- in run 079";" " 
+"2023-06-28
+17:13:52";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: 26P oxide --
+mass 42 -- up next";"" 
+"2023-06-28
+17:15:59";"0:03:27";"080";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+17:19:58";"0:19:11";"081";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+17:41:34";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: previous run
+was PO (mass 42), next run will be
+PO2 (mass 58)";" " 
+"2023-06-28
+17:44:33";"0:10:39";"082";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+17:56:48";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: going back
+to PO (highest rate) while we assess
+the purity (25Si contamination risk)
+in offline analyses";" " 
+"2023-06-28
+18:00:48";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: scrath that
+-- we are doing SiO2 (mass 57) to
+have an actual signature of a
+potential contaminant. for 10
+minutes.";"" 
+"2023-06-28
+18:01:07";"0:05:15";"083";"RUN";"25Si";"30 keV";"C";HF, MM, CW, EJ, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+18:06:45";"N/A";" ";" ";"-";"-";"-";HF, MM, CW, EJ, JD;"IN-BETWEEN-RUN COMMENT: NOW we go
+back to PO (highest rate) while we
+assess the purity (25Si
+contamination risk) in offline
+analyses";" " 
+"2023-06-28
+18:10:44";"0:01:04";"084";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, LS;"PO mass 42
+END-OF-RUN COMMENT BY HF,
+MM, CW, EJ, LS: PO mass 42";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+18:11:54";"0:11:08";"085";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, LS;"PO mass 42";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+18:23:10";"1:18:12";"086";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, LS;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+19:41:29";"1:16:01";"087";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, LS;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+20:57:40";"1:18:48";"088";"RUN";"26P";"30 keV";"C";HF, MM, CW, EJ, LS;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-28
+22:16:39";"1:48:24";"089";"RUN";"26P";"30 keV";"C";HF, MM, JSN;"EXTRA COMMENT 108.3 MINUTES INTO RUN
+BY HF, MM, JSN: From 21:30 to 00:00
+on June 29th (EDT time zone) trigger
+rates in U1 and U2 continually got
+larger to the point where it leaked
+into our accepted trigger rates.
+It
+has sorted itself out, seemingly,
+around 00:00. Should keep an eye on
+it
+END-OF-RUN COMMENT BY HF, MM,
+JSN: From 21:30 to 00:00 on June
+29th (EDT time zone) trigger rates
+in U1 and U2 continually got larger
+to the point where it leaked into
+our accepted trigger rates.
+It has
+sorted itself out, seemingly, around
+00:00. Should keep an eye on it";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+00:05:09";"N/A";"090";"RUN";"26P";"30 keV";"C";HF, MM, JSN;"From 21:30 to 00:00 on June 29th
+(EDT time zone) trigger rates in U1
+and U2 continually got larger to the
+point where it leaked into our
+accepted trigger rates.";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+02:17:25";"0:47:57";"091";"RUN";"26P";"30 keV";"C";LW, LS, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+03:06:03";"N/A";" ";" ";"-";"-";"-";LW, LS, EJ;"IN-BETWEEN-RUN COMMENT: beam control
+having a bit of trouble with one of
+their dipoles. 'will be just a few
+minutes'";" " 
+"2023-06-29
+03:24:56";"2:02:15";"092";"RUN";"26P";"30 keV";"C";LW, LS, EJ;"EXTRA COMMENT 3.5 MINUTES INTO RUN
+BY LW, LS, EJ: beam is back";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+05:27:19";"N/A";"093";"RUN";"26P";"30 keV";"C";LW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+06:14:29";"0:59:22";"094";"RUN";"26P";"30 keV";"C";LW, EJ;"brief daq outage";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+07:14:00";"1:13:45";"095";"RUN";"26P";"30 keV";"C";LW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+08:28:02";"0:02:31";"096";"RUN";"26P";"30 keV";"C";JSN, JD;"Starting new run after 75 min";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+08:32:01";"1:15:01";"097";"RUN";"26P";"30 keV";"C";JSN, JD;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+09:53:56";"1:05:02";"098";"RUN";"25Si";"30 keV";"C";JSN, JD, HF, CW;"Taking mass 57 (25Si + 2*O) for
+background measurement
+END-OF-RUN
+COMMENT BY JSN, JD, HF, CW: Taking
+mass 57 (25Si + 2*O) for background
+measurement";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+10:59:08";"1:00:01";"099";"RUN";"25Si";"30 keV";"C";JSN, JD, HF, CW;"Taking mass 57 (25Si + 2*O) for
+background measurement
+END-OF-RUN
+COMMENT BY JSN, JD, HF, CW: Taking
+mass 57 (25Si + 2*O) for background
+measurement";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+11:59:21";"1:00:01";"100";"RUN";"25Si";"30 keV";"C";JSN, JD, HF, CW;"Taking mass 57 (25Si + 2*O) for
+background measurement
+END-OF-RUN
+COMMENT BY JSN, JD, HF, CW: Taking
+mass 57 (25Si + 2*O) for background
+measurement";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+12:59:30";"0:55:04";"101";"RUN";"25Si";"30 keV";"C";JSN, JD, HF, CW;"Taking mass 57 (25Si + 2*O) for
+background measurement
+END-OF-RUN
+COMMENT BY JSN, JD, HF, CW: Ending
+25Si run";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+14:05:14";"0:57:34";"102";"RUN";"27S";"30 keV";"C";JSN, JD, HF, CW;"Taking 27S at mass 43
+END-OF-RUN
+COMMENT BY JSN, JD, HF, CW: Taking
+27S at mass 43";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+15:07:30";"1:05:51";"103";"RUN";"26P";"30 keV";"C";JSN, JD, HF, CW;"Back to taking 26P at mass 42
+END-
+OF-RUN COMMENT BY JSN, JD, HF, CW:
+Back to taking 26P at mass 42";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+16:13:46";"1:02:26";"104";"RUN";"26P";"30 keV";"C";JSN, JD, HF, CW;"Restarting file to do yield analysis
+END-OF-RUN COMMENT BY JSN, JD, HF,
+CW: Restarting file to do yield
+analysis";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+17:16:21";"1:05:13";"105";"RUN";"26P";"30 keV";"C";JSN, JD, HF, CW;"Restarting file to do yield analysis
+END-OF-RUN COMMENT BY JSN, JD, HF,
+CW: Restarting file to do yield
+analysis";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+18:21:41";"1:00:02";"106";"RUN";"26P";"30 keV";"C";JSN, JD, HF, CW;"Restarting file to do yield analysis";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+19:21:52";"1:00:01";"107";"RUN";"26P";"30 keV";"C";HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+20:22:02";"1:00:06";"108";"RUN";"26P";"30 keV";"C";HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+21:22:16";"1:00:02";"109";"RUN";"26P";"30 keV";"C";HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+22:22:25";"1:00:02";"110";"RUN";"26P";"30 keV";"C";HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+23:22:34";"N/A";"111";"RUN";"26P";"30 keV";"C";HF;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+23:48:25";"N/A";" ";" ";"-";"-";"-";HF;"IN-BETWEEN-RUN COMMENT: previous run
+not gracefully stopped due to vpn
+drop";" " 
+"2023-06-29
+23:48:36";"N/A";" ";" ";"-";"-";"-";HF;"IN-BETWEEN-RUN COMMENT: previous run
+not gracefully stopped due to vpn
+drop -- run 111";"" 
+"2023-06-29
+23:48:39";"0:02:11";"112";"RUN";"26P";"30 keV";"C";HF;"EXTRA COMMENT 0.2 MINUTES INTO RUN
+BY AA, TW, EJ: .";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-29
+23:50:57";"1:13:12";"113";"RUN";"26P";"30 keV";"C";AA, TW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+01:04:17";"1:07:20";"114";"RUN";"26P";"30 keV";"C";AA, TW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+02:11:52";"1:11:25";"115";"RUN";"26P";"30 keV";"C";LW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+03:23:28";"0:58:50";"116";"RUN";"26P";"30 keV";"C";LW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+04:22:43";"1:10:30";"117";"RUN";"26P";"30 keV";"C";LW, EJ;"";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+05:33:21";"1:14:01";"118";"RUN";"26P";"30 keV";"C";LW, EJ;"END-OF-RUN COMMENT BY LW, EJ: final
+radioactive beam of the experiment.
+measuring on the beam off part as
+well. Friday June 30th at 6:45 am
+beam is off";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+08:22:49";"N/A";"119";"CALIBRATION";"Background";"-";"-";HF, EJ;"Background, only with germanium
+trigger. Foil removed from chamber";"HPGE(0)" 
+"2023-06-30
+08:25:09";"1:01:02";"120";"CALIBRATION";"Background";"-";"-";HF, EJ;"Background, only with germanium
+trigger. Foil removed from chamber
+EXTRA COMMENT 0.2 MINUTES INTO RUN
+BY HF, EJ: Run 119 is bad";"HPGE(0)" 
+"2023-06-30
+10:02:14";"1:28:49";"121";"CALIBRATION";"152Eu";"-";"HPGES";HF, EJ;"152Eu efficiency calibration. Placed
+as close to implantation point as
+possible
+END-OF-RUN COMMENT BY HF,
+EJ: 152Eu efficiency calibration.
+Placed as close to implantation
+point as possible";"HPGE(0)" 
+"2023-06-30
+11:56:16";"0:36:30";"122";"CALIBRATION";"226Ra";"-";"HPGES";JSN, JD, EJ;"226Ra gamma calibration
+END-OF-RUN
+COMMENT BY JSN, JD, EJ: 226Ra gamma
+calibration";"HPGE(0)" 
+"2023-06-30
+12:58:05";"0:03:27";"123";"PULSER";"-";"-";"Silicons";JSN, JD, EJ, HF;"ramping pulser sequence from 'zero'
+to ADC channel 700~1000
+END-OF-RUN
+COMMENT BY JSN, JD, EJ, HF: ramping
+pulser sequence from 'zero' to ADC
+channel 700~1000";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0)" 
+"2023-06-30
+13:41:59";"0:15:05";"124";"CALIBRATION";"3a";"-";"U6";JSN, JD, LS, AA, HF;"3a source calibration of U6
+END-OF-
+RUN COMMENT BY JSN, JD, LS, AA, HF:
+3a source calibration of U6";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+13:57:54";"0:08:32";"125";"CALIBRATION";"3a";"-";"U3, U4";JSN, JD, LS, AA, HF;"3a source calibration of U3,U4
+END-
+OF-RUN COMMENT BY JSN, JD, LS, AA,
+HF: 3a source calibration of U3,U4";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+14:06:44";"0:25:36";"126";"CALIBRATION";"3a";"-";"U3, U4";JSN, JD, LS, AA, HF;"3a source calibration of U3,U4,
+restart because stopped writing to
+file
+END-OF-RUN COMMENT BY JSN, JD,
+LS, AA, HF: 3a source calibration of
+U3,U4, restart because stopped
+writing to file";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+14:32:52";"N/A";"127";"CALIBRATION";"3a";"-";"U5";JSN, JD, LS, AA, HF;"3a source calibration of U5
+EXTRA
+COMMENT 10.9 MINUTES INTO RUN BY
+JSN, JD, LS, AA, HF: 3a source
+calibration of U5";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-06-30
+14:51:41";"0:18:32";"128";"CALIBRATION";"3a";"-";"U1, U2";JSN, JD, LS, AA, HF;"3a source calibration of U1, U2
+END-
+OF-RUN COMMENT BY JSN, JD, LS, AA,
+HF: 3a source calibration of U1, U2";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-07-01
+09:55:54";"0:08:35";"129";"CALIBRATION";"3a";"-";"P1, P2";JSN, HF, EJ;"3a source calibration of P1, P2
+END-
+OF-RUN COMMENT BY JSN, HF, EJ: 3a
+source calibration of P1, P2";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-07-01
+10:06:01";"0:07:14";"130";"CALIBRATION";"3a";"-";"P3, P4";JSN, HF, EJ;"3a source calibration of P3, P4
+END-
+OF-RUN COMMENT BY JSN, HF, EJ: 3a
+source calibration of P3, P4";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 
+"2023-07-01
+11:08:39";"0:07:00";"131";"CALIBRATION";"3a";"-";"P6";JSN, HF, EJ;"3a source calibration of P6
+END-OF-
+RUN COMMENT BY JSN, HF, EJ: 3a
+source calibration of P6";"DET1(0), DET2(0), DET3(0), DET4(0),
+DET5(0), DET6(0), PADS(0), HPGE(0)" 

@@ -1,0 +1,12 @@
+{
+  "center" : {"x":"0mm", "y":"0mm", "z":"0mm"},
+  "orientation" : {"x":"0mm", "y":"1mm", "z":"0mm"},
+  "normal" : {"x":"0mm", "y":"0mm", "z":"-1mm"},
+  "size" : "10mm",
+  "shape" : "circle",
+
+  "layers" : [
+    {"material" : "Carbon", "thickness" : "2mm", "active":true},
+    {"material" : "G4_Al", "thickness" : "5mm", "active":true}
+  ]
+}

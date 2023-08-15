@@ -1,0 +1,17 @@
+########   GEOMETRY   ############
+/G4Sim/rootDirectory /home/erik/devel/projects/is507_v3/sim/res
+/G4Sim/setupFile setup/setup_pads_only.json
+/G4Sim/outputFile ../data/sim/alphaSource.root
+
+########   REACTION   ############
+/G4Sim/sourceFile sources/AU3a.json
+
+######## RUN ############
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/control/verbose 0
+/process/em/verbose 0
+
+/G4Sim/simType alphaSource
+/run/beamOn 100000

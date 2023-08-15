@@ -1,0 +1,19 @@
+# G4Sim
+/G4Sim/rootDirectory /home/erik/devel/projects/e21010/sim/res
+/G4Sim/setupFile setup/setup.json
+/G4Sim/targetFile targets/target.json
+/G4Sim/targetHolderFile targets/targetholder.json
+/G4Sim/outputFile ../data/unpacked_sim/10M_p1500keV.root
+/G4Sim/isotropic/particle p
+/G4Sim/isotropic/energy 1.5 MeV
+/G4Sim/isotropic/implantationDepth 41.5 nm
+/G4Sim/simType isotropic
+
+# Make all units quiet -- turn up verbosity (1, 2, 3) to track issues
+/control/verbose 0
+/event/verbose 0
+/run/verbose 0
+/tracking/verbose 0
+/process/em/verbose 0
+
+/run/beamOn 10000000

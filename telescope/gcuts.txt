@@ -1,0 +1,24 @@
+TFile input("all.root", "read");
+TFile output("gcuts.root", "recreate");
+input.cd();
+
+/*
+ * draw gcut
+ */
+
+TCutG *mycut = (TCutG*) gROOT->GetListOfSpecials()->FindObject("CUTG");
+mycut->SetName("t0lo");
+output.cd();
+mycut->Write();
+input.cd();
+
+/*
+ * draw gcut, repeat
+ */
+
+/*
+ * ...
+ */
+
+input.Close();
+output.Close();

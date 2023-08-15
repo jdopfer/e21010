@@ -1,0 +1,15 @@
+/gps/particle alpha
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/centre 0. 1. 0. cm
+/gps/pos/radius 1. cm
+
+
+/gps/ang/type iso
+/gps/ang/mintheta 90 deg
+/gps/ang/maxphi 180 deg
+
+
+/gps/ene/type mono 100 keV
+

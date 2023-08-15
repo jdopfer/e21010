@@ -1,0 +1,47 @@
+# AUSAlib version: 17.1
+# Calibrator version: 2.0
+# Calibrator arguments: Calibrator --eloss --gui -d U4 -k FRIB3a.json
+# Input files: 
+#	U3U4.root
+# Calibration of U4
+# Performed @ 2023-06-23 23:29
+# Performed by jeppe on S540
+# Front
+-39.2252 3.64276
+-9.52683 3.66641
+-27.4137 3.49909
+-40.4953 3.57625
+-13.4067 3.70962
+-17.0167 3.59767
+-3.02554 3.6519
+-12.7388 3.5535
+3.15756 3.55375
+-8.74256 3.59809
+-13.2297 3.45578
+-4.58219 3.65656
+-5.30867 3.45843
+-11.8562 3.56812
+# Slope or offset was either NaN or Inf and has been set to 0.0!
+0.0 0.0
+# Slope or offset was either NaN or Inf and has been set to 0.0!
+0.0 0.0
+# Back
+# Slope or offset was either NaN or Inf and has been set to 0.0!
+0.0 0.0
+# Slope or offset was either NaN or Inf and has been set to 0.0!
+0.0 0.0
+# Slope or offset was either NaN or Inf and has been set to 0.0!
+0.0 0.0
+-18.9022 3.56521
+-38.8134 3.64197
+-33.892 3.62927
+-33.157 3.53575
+-7.86684 3.61406
+-2.88916 3.72872
+-26.4515 3.78286
+-14.1266 3.48138
+-12.0042 3.61794
+-15.9414 3.55138
+-22.5018 3.59439
+-25.3626 3.48843
+-23.8535 3.66163

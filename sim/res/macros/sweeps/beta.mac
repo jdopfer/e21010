@@ -1,0 +1,35 @@
+# G4Sim
+/G4Sim/setupFile res/setup/setup_min.json
+/G4Sim/targetFile res/targets/target_min.json
+/G4Sim/targetHolderFile res/targets/targetholder.json
+/G4Sim/targetDetector U6 # simType must be 'gps'
+/G4Sim/simType gps
+/G4Sim/outputFile data/unpacked_sim/bU6c.root
+
+# Init
+/control/verbose 0
+/event/verbose 0
+/run/verbose 0
+/tracking/verbose 0
+
+# GPS
+/gps/verbose 0
+/gps/particle e-
+/gps/pos/type Point
+/gps/pos/shape Circle
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius 0.25 cm
+/gps/ang/type focused
+
+# GPS: uniform energy dist. from minimum to maximum energy
+/gps/ene/type Arb                    # point-wise spectrum
+/gps/ene/emspec true                 # spectrum is in energy units, not momentum units
+/gps/ene/diffspec true               # spectrum is differential, not integral
+/gps/hist/type arb                   # the second argument to all three points below is the weight
+                                     # of the individual points => uniform distribution
+/gps/hist/point  0.0 1.              # 0.0 MeV  = minimum value of energy distribution
+/gps/hist/point 13.1 1.              # 13.1 MeV = maximum value of energy distribution
+/gps/hist/point 13.2 0.              # must add another point...
+/gps/hist/inter Lin                  # must be issued immediately after the final point in histogram
+
+/run/beamOn 100000

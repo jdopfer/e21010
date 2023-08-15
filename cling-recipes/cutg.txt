@@ -1,0 +1,52 @@
+TFile input("all.root", "read");
+TFile output("gcuts.root", "recreate");
+input.cd();
+
+/*
+ * draw gcut
+ */
+
+TCutG *mycut = (TCutG*) gROOT->GetListOfSpecials()->FindObject("CUTG");
+mycut->SetName("t0lo");
+output.cd();
+mycut->Write();
+input.cd();
+
+/*
+ * draw gcut, repeat
+ */
+
+/*
+ * ...
+ */
+
+input.Close();
+output.Close();
+
+
+
+
+
+
+
+
+
+
+
+TH2F* h1 = (TH2F*) gROOT->FindObject("h1");
+TCutG *cut1 = (TCutG*) gROOT->GetListOfSpecials()->FindObject("CUTG");
+cut1->IntegralHist(h1);
+
+
+
+a->Draw("E >> (250, 500, 3000)", "id == 1 && Edep < 3500 && FI != 1 && FI != 16 && BI != 1 && BI != 16")
+a->Draw("E >> (250, 500, 3000)", "id == 1 && Edep < 3500", "SAME")
+
+
+
+
+
+
+
+
+

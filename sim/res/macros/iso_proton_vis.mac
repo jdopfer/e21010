@@ -1,0 +1,45 @@
+# G4Sim
+/G4Sim/rootDirectory /home/erik/devel/projects/e21010/sim/res
+/G4Sim/setupFile setup/setup.json
+/G4Sim/targetFile targets/target.json
+/G4Sim/targetHolderFile targets/targetholder.json
+/G4Sim/outputFile ../data/unpacked_sim/junk.root
+/G4Sim/isotropic/particle p
+/G4Sim/isotropic/energy 1.5 MeV
+/G4Sim/isotropic/implantationDepth 41.5 nm
+/G4Sim/simType isotropic
+
+# Make all units quiet -- turn up verbosity (1, 2, 3) to track issues
+/control/verbose 0
+/event/verbose 0
+/run/verbose 0
+/tracking/verbose 0
+/process/em/verbose 0
+
+# Vis
+/vis/scene/create
+/vis/open OGL 600x600-0+0
+/vis/scene/create
+/vis/scene/add/volume world
+/vis/sceneHandler/attach
+
+# Draw geometry:
+/vis/drawVolume
+
+/vis/scene/add/trajectories
+/vis/scene/add/hits
+/tracking/storeTrajectory 1
+
+#/vis/viewer/flush
+#/vis/viewer/update
+#/vis/viewer/set/autoRefresh true
+
+#/vis/modeling/trajectories/create/drawByParticleID <minModel>
+#/vis/modeling/trajectories/<minModel>/set e red
+#/vis/modeling/trajectories/<minModel>/set e+ green
+#/vis/modeling/trajectories/<minModel>/set 4 blue
+
+# Draw coordinate axes:
+/vis/scene/add/axes 0 0 0 1 cm
+
+/run/beamOn 1

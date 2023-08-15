@@ -1,0 +1,11 @@
+{
+  "center" :      { "x" : "0mm", "y" : "0mm", "z" : "0mm" },
+  "orientation" : { "x" : "0mm", "y" : "1mm", "z" : "0mm" },
+  "normal" :      { "x" : "0mm", "y" : "0mm", "z" : "1mm"},
+  "inner" : "12mm",
+  "outer" : "15mm",
+  "shape" : "circle",
+  "layers" : [
+    {"material" : "G4_Al", "thickness" : "1 mm", "active" : true}
+  ]
+}

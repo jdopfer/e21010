@@ -1,0 +1,19 @@
+########   GEOMETRY   ############
+/G4Sim/setupFile res/setup/setup_min.json
+/G4Sim/targetFile res/targets/target_min.json
+# /G4Sim/targetHolderFile ../res/targets/targetholder.json
+/G4Sim/outputFile data/sim/run.root
+
+########   REACTION   ############
+# /G4Sim/particleFile ../res/BetaDecayParticles/C12.json
+# /G4Sim/simType betaDecay
+/G4Sim/sourceFile res/sources/AU3a.json
+/G4Sim/simType alphaSource
+
+######## RUN ############
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/control/verbose 0
+
+/run/beamOn 1000000

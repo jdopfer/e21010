@@ -1,0 +1,73 @@
+# G4Sim
+/G4Sim/rootDirectory /home/erik/devel/projects/e21010/sim/res
+/G4Sim/setupFile setup/setup.json
+/G4Sim/targetFile targets/target.json
+#/G4Sim/targetFile targets/target_min.json
+/G4Sim/targetHolderFile targets/targetholder.json
+/G4Sim/singleDetectorTarget U4
+/G4Sim/outputFile ../data/tmp/junk.root
+/G4Sim/simType singleDetector
+
+# Make all units quiet -- turn up verbosity (1, 2, 3) to track issues
+/control/verbose 0
+/event/verbose 0
+/run/verbose 0
+/tracking/verbose 0
+/process/em/verbose 0
+
+# GPS
+/gps/verbose 0
+/gps/particle proton
+#/gps/pos/type Point                  # 'Beam'
+#/gps/pos/shape Circle
+#/gps/pos/centre 0. 0. 0. cm
+#/gps/pos/radius 0.25 cm
+#/gps/ang/type focused
+#/gps/ang/type iso
+#/gps/ang/focuspoint  1.  0.  1. cm   # use this if ang type is 'focused'
+#/gps/ang/mintheta 90 deg            # use this if ang type is 'iso'
+#/gps/ang/maxphi 180 deg             # use this if ang type is 'iso'
+
+#/gps/ang/mintheta  90 deg
+#/gps/ang/maxtheta  90 deg
+#/gps/ang/minphi    90 deg
+#/gps/ang/maxphi    90 deg
+
+# GPS: uniform energy dist. from minimum to maximum energy
+/gps/ene/type Arb                    # point-wise spectrum
+/gps/ene/emspec true                 # spectrum is in energy units, not momentum units
+/gps/ene/diffspec true               # spectrum is differential, not integral
+/gps/hist/type arb                   # the second argument to all three points below is the weight
+                                     # of the individual points => uniform distribution
+/gps/hist/point  0.0 1.              #  0.0 MeV = minimum value of energy distribution
+/gps/hist/point  7.0 1.              # 10.1 MeV = maximum value of energy distribution
+/gps/hist/point  7.0001 0.           # must add another point...
+/gps/hist/inter Lin                  # must be issued immediately after the final point in histogram
+
+# Vis
+/vis/scene/create
+/vis/open OGL 600x600-0+0
+/vis/scene/create
+/vis/scene/add/volume world
+/vis/sceneHandler/attach
+
+# Draw geometry:
+/vis/drawVolume
+
+/vis/scene/add/trajectories
+/vis/scene/add/hits
+/tracking/storeTrajectory 1
+
+#/vis/viewer/flush
+#/vis/viewer/update
+#/vis/viewer/set/autoRefresh true
+
+#/vis/modeling/trajectories/create/drawByParticleID <minModel>
+#/vis/modeling/trajectories/<minModel>/set e red
+#/vis/modeling/trajectories/<minModel>/set e+ green
+#/vis/modeling/trajectories/<minModel>/set 4 blue
+
+# Draw coordinate axes:
+/vis/scene/add/axes 0 0 0 1 cm
+
+/run/beamOn 1

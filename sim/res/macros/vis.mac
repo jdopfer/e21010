@@ -1,0 +1,43 @@
+########   GEOMETRY   ############
+/G4Sim/setupFile res/setup/setup_min.json
+/G4Sim/targetFile res/targets/target_min.json
+/G4Sim/targetHolderFile res/targets/targetholder.json
+
+########   REACTION   ############
+#/G4Sim/particleFile ../res/BetaDecayParticles/C12.json
+#/G4Sim/simType betaDecay
+/G4Sim/sourceFile res/sources/AU3a.json
+/G4Sim/simType alphaSource
+
+########   VIS   ############
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/control/verbose 0
+
+/vis/scene/create
+/vis/open OGL 600x600-0+0
+/vis/scene/create
+/vis/scene/add/volume world
+/vis/sceneHandler/attach
+
+# Draw geometry:
+/vis/drawVolume
+
+#/vis/scene/add/trajectories
+#/vis/scene/add/hits
+#/tracking/storeTrajectory 1
+
+#/vis/viewer/flush
+#/vis/viewer/update
+#/vis/viewer/set/autoRefresh true
+
+#/vis/modeling/trajectories/create/drawByParticleID <minModel>
+#/vis/modeling/trajectories/<minModel>/set e red
+#/vis/modeling/trajectories/<minModel>/set e+ green
+#/vis/modeling/trajectories/<minModel>/set 4 blue
+
+# Draw coordinate axes:
+/vis/scene/add/axes 0 0 0 1 cm
+
+/run/beamOn 1
