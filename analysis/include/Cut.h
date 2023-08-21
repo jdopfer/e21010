@@ -1,5 +1,5 @@
-#ifndef IS507_V3_CUT_H
-#define IS507_V3_CUT_H
+#ifndef E21010_V3_CUT_H
+#define E21010_V3_CUT_H
 
 #include <iostream>
 #include <string>
@@ -24,4 +24,4 @@ protected:
   cut_logic cutLogic;
 };
 
-#endif //IS507_V3_CUT_H
+#endif //E21010_V3_CUT_H

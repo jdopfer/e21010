@@ -1,5 +1,5 @@
-#ifndef IS507DETECTOR_H
-#define IS507DETECTOR_H
+#ifndef E21010DETECTOR_H
+#define E21010DETECTOR_H
 
 #include "gCut.h"
 
@@ -30,10 +30,10 @@ namespace IS507 {
     Gamma
   };
 
-  class IS507Detector {
+  class E21010Detector {
   public:
-    IS507Detector() = default;
-    IS507Detector(unsigned short id, string name, Type type, Calibration cal, const shared_ptr<AUSA::Setup>& setup)
+    E21010Detector() = default;
+    E21010Detector(unsigned short id, string name, Type type, Calibration cal, const shared_ptr<AUSA::Setup>& setup)
     : id(id), name(std::move(name)), type(type), cal(cal), setup(setup) {
       switch (type) {
         case DSSSD:
@@ -54,8 +54,8 @@ namespace IS507 {
           break;
       }
     };
-    IS507Detector(unsigned short id, string name, Type type, Calibration cal, const shared_ptr<AUSA::Setup>& setup,
-                  double betaCutoff) : IS507Detector(id, std::move(name), type, cal, setup) {
+    E21010Detector(unsigned short id, string name, Type type, Calibration cal, const shared_ptr<AUSA::Setup>& setup,
+                   double betaCutoff) : E21010Detector(id, std::move(name), type, cal, setup) {
       this->betaCutoff = betaCutoff;
     };
 
@@ -63,7 +63,7 @@ namespace IS507 {
     string getName() const { return name; };
     Type getType() const { return type; };
     Calibration getCalibration() const { return cal; };
-    IS507Detector* getPartner() const { return partner; };
+    E21010Detector* getPartner() const { return partner; };
     double getFrontDeadLayer() const { return frontDeadLayer; }
     double getThickness() const { return thickness; }
     double getBackDeadLayer() const { return backDeadLayer; }
@@ -75,7 +75,7 @@ namespace IS507 {
     void setName(string name) { this->name = std::move(name); };
     void setType(Type type) { this->type = type; };
     void setCalibration(Calibration cal) { this->cal = cal; };
-    void setPartner(IS507Detector* partner) { this->partner = partner; this->withPartner = true; };
+    void setPartner(E21010Detector* partner) { this->partner = partner; this->withPartner = true; };
     void setFrontDeadLayer(double fdl) { this->frontDeadLayer = fdl; }
     void setThickness(double t) { this->thickness = t; }
     void setBackDeadLayer(double bdl) { this->backDeadLayer = bdl; }
@@ -90,7 +90,7 @@ namespace IS507 {
     string name;
     Type type{};
     Calibration cal{};
-    IS507Detector* partner{};
+    E21010Detector* partner{};
     bool withPartner = false;
 
     shared_ptr<AUSA::Setup> setup;
@@ -101,11 +101,11 @@ namespace IS507 {
     vector<TelescopeTabulation*> tTabulations;
   };
 
-  void makePartners(IS507Detector* det1, IS507Detector* det2) {
+  void makePartners(E21010Detector* det1, E21010Detector* det2) {
     det1->setPartner(det2);
     det2->setPartner(det1);
   }
 
 }
 
-#endif //IS507DETECTOR_H
+#endif //E21010DETECTOR_H

@@ -1,12 +1,12 @@
-#ifndef IS507GENERALANALYSIS_H
-#define IS507GENERALANALYSIS_H
+#ifndef E21010GENERALANALYSIS_H
+#define E21010GENERALANALYSIS_H
 
 #include <libconfig.h++>
 #include "projectutil.h"
 #include "Hit.h"
-#include "IS507Detector.h"
+#include "E21010Detector.h"
 #include "analysisIO.h"
-#include "IS507GeneralAnalysis.h"
+#include "E21010GeneralAnalysis.h"
 
 #include <TROOT.h>
 
@@ -36,32 +36,32 @@ using namespace AUSA::EnergyLoss;
 using namespace Telescope;
 using namespace AUSA::Constants;
 
-class IS507GeneralAnalysis : public AbstractSortedAnalyzer {
+class E21010GeneralAnalysis : public AbstractSortedAnalyzer {
 public:
-  IS507GeneralAnalysis(const shared_ptr<Setup> &setupSpec, const shared_ptr<Target> &target, TFile *output,
-                       double implantation_depth, string twoPdaughter="20Ne",
-                       bool exclude_clovers = false, bool exclude_U5 = false, bool include_dsd_rim = false,
-                       bool include_beta_region = false, bool include_spurious_zone=false)
+  E21010GeneralAnalysis(const shared_ptr<Setup> &setupSpec, const shared_ptr<Target> &target, TFile *output,
+                        double implantation_depth, string twoPdaughter="20Ne",
+                        bool exclude_clovers = false, bool exclude_U5 = false, bool include_dsd_rim = false,
+                        bool include_beta_region = false, bool include_spurious_zone=false)
       : setupSpec(setupSpec), target(target), implantation_depth(implantation_depth),
         exclude_clovers(exclude_clovers), exclude_U5(exclude_U5), include_dsd_rim(include_dsd_rim),
         include_beta_region(include_beta_region), include_spurious_zone(include_spurious_zone), twoPD_string(twoPdaughter) {
 
     origin = target->getCenter() - (implantation_depth - target->getThickness()/2.)*target->getNormal();
 
-    auto U1 = new IS507Detector(0,  "U1", DSSSD,  Alpha, setupSpec, 350.);
-    auto U2 = new IS507Detector(1,  "U2", DSSSD,  Alpha, setupSpec, 350.);
-    auto U3 = new IS507Detector(2,  "U3", DSSSD,  Alpha, setupSpec, 350.);
-    auto U4 = new IS507Detector(3,  "U4", DSSSD,  Alpha, setupSpec, 800.);
-    auto U5 = new IS507Detector(4,  "U5", DSSSD,  Alpha, setupSpec, 1700.);
-    auto U6 = new IS507Detector(5,  "U6", DSSSD,  Alpha, setupSpec, 350.);
-    auto P1 = new IS507Detector(6,  "P1", Pad,    Alpha, setupSpec);
-    auto P2 = new IS507Detector(7,  "P2", Pad,    Alpha, setupSpec);
-    auto P3 = new IS507Detector(8,  "P3", Pad,    Alpha, setupSpec);
-    auto P4 = new IS507Detector(9,  "P4", Pad,    Alpha, setupSpec);
-    auto P5 = new IS507Detector(10, "P5", Pad,    Alpha, setupSpec); // dead!
-    auto P6 = new IS507Detector(11, "P6", Pad,    Alpha, setupSpec);
-    auto G1 = new IS507Detector(12, "G1", Clover, Gamma, setupSpec);
-    auto G2 = new IS507Detector(13, "G2", Clover, Gamma, setupSpec);
+    auto U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec, 350.);
+    auto U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec, 350.);
+    auto U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec, 350.);
+    auto U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec, 800.);
+    auto U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec, 1700.);
+    auto U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec, 350.);
+    auto P1 = new E21010Detector(6, "P1", Pad, Alpha, setupSpec);
+    auto P2 = new E21010Detector(7, "P2", Pad, Alpha, setupSpec);
+    auto P3 = new E21010Detector(8, "P3", Pad, Alpha, setupSpec);
+    auto P4 = new E21010Detector(9, "P4", Pad, Alpha, setupSpec);
+    auto P5 = new E21010Detector(10, "P5", Pad, Alpha, setupSpec); // dead!
+    auto P6 = new E21010Detector(11, "P6", Pad, Alpha, setupSpec);
+    auto G1 = new E21010Detector(12, "G1", Clover, Gamma, setupSpec);
+    auto G2 = new E21010Detector(13, "G2", Clover, Gamma, setupSpec);
 
     makePartners(U1, P1);
     makePartners(U2, P2);
@@ -191,7 +191,7 @@ public:
     }
   }
 
-  void findDssdHit(IS507Detector *detector) {
+  void findDssdHit(E21010Detector *detector) {
     unsigned short id = detector->getId();
     auto &o = output.getDssdOutput(detector->getName());
     auto &d = o.detector();
@@ -241,7 +241,7 @@ public:
     }
   }
 
-  void findPadHit(IS507Detector *detector) {
+  void findPadHit(E21010Detector *detector) {
     unsigned short id = detector->getId();
     auto &o = output.getSingleOutput(detector->getName());
     auto &d = o.detector();
@@ -272,7 +272,7 @@ public:
     }
   }
 
-  void findGermaniumHit(IS507Detector *detector) {
+  void findGermaniumHit(E21010Detector *detector) {
     unsigned short id = detector->getId();
     auto &o = output.getSingleOutput(detector->getName());
     auto &d = o.detector();
@@ -551,7 +551,7 @@ public:
     hits.clear();
   }
 
-  unordered_set<IS507Detector *> detectors;
+  unordered_set<E21010Detector *> detectors;
 
   TTree *tree;
   int NUM;
@@ -590,4 +590,4 @@ public:
   string twoPD_string;
 };
 
-#endif //IS507GENERALANALYSIS_H
+#endif //E21010GENERALANALYSIS_H

@@ -1,5 +1,5 @@
-#ifndef IS507_V3_GCUT_H
-#define IS507_V3_GCUT_H
+#ifndef E21010_V3_GCUT_H
+#define E21010_V3_GCUT_H
 
 #include <iostream>
 #include <string>
@@ -31,4 +31,4 @@ private:
   TGraph* graph;
 };
 
-#endif //IS507_V3_GCUT_H
+#endif //E21010_V3_GCUT_H

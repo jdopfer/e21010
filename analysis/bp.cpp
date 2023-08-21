@@ -2,7 +2,7 @@
 #include "projectutil.h"
 #include "Hit.h"
 #include "analysisIO.h"
-#include "IS507GeneralAnalysis.h"
+#include "E21010GeneralAnalysis.h"
 
 #include <TROOT.h>
 
@@ -21,15 +21,15 @@ using namespace AUSA;
 using namespace AUSA::Sort;
 using namespace AUSA::EnergyLoss;
 
-class DeltaEContainedAnalysis : public IS507GeneralAnalysis {
+class DeltaEContainedAnalysis : public E21010GeneralAnalysis {
 public:
   DeltaEContainedAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                           string twoPdaughter="20Ne",
                           bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                           bool include_beta_region=false, bool include_spurious_zone=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, include_spurious_zone) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -58,15 +58,15 @@ public:
   }
 };
 
-class BananaExplorativeAnalysis : public IS507GeneralAnalysis {
+class BananaExplorativeAnalysis : public E21010GeneralAnalysis {
 public:
   BananaExplorativeAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                             string twoPdaughter="20Ne",
                             bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                             bool include_beta_region=false, bool include_spurious_zone=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, include_spurious_zone) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -127,15 +127,15 @@ public:
   }
 };
 
-class FinalAnalysis : public IS507GeneralAnalysis {
+class FinalAnalysis : public E21010GeneralAnalysis {
 public:
   FinalAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                 string twoPdaughter="20Ne",
                             bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                             bool include_beta_region=false, bool include_spurious_zone=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, include_spurious_zone) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -197,15 +197,15 @@ public:
   }
 };
 
-class GammaGatedProtons : public IS507GeneralAnalysis {
+class GammaGatedProtons : public E21010GeneralAnalysis {
 public:
   GammaGatedProtons(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                     string twoPdaughter="20Ne",
                 bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                 bool include_beta_region=false, bool include_spurious_zone=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, include_spurious_zone) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -287,15 +287,15 @@ public:
   }
 };
 
-class TwoProton : public IS507GeneralAnalysis {
+class TwoProton : public E21010GeneralAnalysis {
 public:
   TwoProton(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
             string twoPdaughter="20Ne",
                     bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                     bool include_beta_region=false, bool include_spurious_zone=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, include_spurious_zone) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -389,15 +389,15 @@ public:
   }
 };
 
-class Alphas : public IS507GeneralAnalysis {
+class Alphas : public E21010GeneralAnalysis {
 public:
   Alphas(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                           string twoPdaughter="20Ne",
                           bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
                           bool include_beta_region=false)
-          : IS507GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                 exclude_clovers, exclude_U5, include_dsd_rim,
-                                 include_beta_region, true) {}
+          : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
+                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  include_beta_region, true) {}
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -451,7 +451,7 @@ int main(int argc, char *argv[]) {
     TString outfile = (output_dir + "/" + stem + "lio.root").c_str();
 
     TFile output(outfile, "RECREATE");
-    shared_ptr<IS507GeneralAnalysis> analysis;
+    shared_ptr<E21010GeneralAnalysis> analysis;
     if (specificAnalysis == "DeltaEContained") {
       analysis =
               make_shared<DeltaEContainedAnalysis>(setup, target, &output, implantation_depth, twoPDaughter,

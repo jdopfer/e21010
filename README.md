@@ -1,55 +1,89 @@
-# IS507 V3
+# E21010
 
-IS507 is an experimental campaign in two parts.
-The first part is focused on 21Mg, and the second part on 20Mg.
-Between the two parts of the campaign, the experimental setups were very different.
+FRIB experiment 21010 studies the beta decays of 22Al and 26P. 
+The experiment was carried out in June-July 2023 at FRIB, MSU, East Lansing, Michigan, USA.
 
-This project carries out extensive data analyses on 21Mg data from the second part of 
-the experimental campaign which was actually focused on 20Mg - 21Mg were "merely" 
-calibration runs in this context.
+## Dependencies
 
-Experiment, with focus on 20Mg, was part of Morten's thesis (v1); Sofie inherited 21Mg (v2).
-Erik then continued the analysis of 21Mg (v3).
+### For data analyses
+
+* ROOT
+* GSL
+* [AUSAlib](https://gitlab.au.dk/ausa/ausalib) -- rough guide on its installation [here](https://gitlab.au.dk/ausa/erik/ausa-install) -- and a project wiki [here](https://gitlab.au.dk/ausa/ausalib/-/wikis/home)
+* [telescope](https://gitlab.au.dk/ausa/erik/telescope) -- an AUSAlib extension library
+* [libconfig++](https://hyperrealm.github.io/libconfig/) -- available in most package managers!
+
+### For simulations
+
+* ROOT
+* Geant4
+* AUSAlib
+* [G4Sim](https://gitlab.au.dk/ausa/g4sim) -- rough guide on its installation [here](https://gitlab.au.dk/au479664/G4Sim/-/wikis/Installation)
+
+If you are only here for the data analyses, comment out the line that says
+
+```cmake
+add_subdirectory(sim)
+```
+
+in the file `CMakeLists.txt`.
 
 ## Setting up the project
 
-Make a **build directory** from which CMake can interpret the `CMakeLists.txt` contained 
-in this **project directory**;
+### Path to the data
 
-e.g.
+From the root of the project, create an absolute link by the name of `data` to a directory which contains the data from the experiment
 
 ```shell
-cd /path/to/is507_v3
+ln -s /absolute/path/to/data/directory data
+```
+
+The contents of the data directory are expected to be similar to the following
+
+```shell
+user@hostname:somewhere> tree -d /absolute/path/to/data/directory
+/absolute/path/to/data/directory
+├── raw
+├── sorted
+└── unpacked
+```
+
+#### A few notes on the data
+
+Only the data contained in `data/sorted` are necessary to carry out the various analyses.
+Data files in `data/sorted` have signature `XXX_YYYm.root` where `XXX` is a zero-padded run number and `YYY` is a zero-padded sub-run number.
+These files contain calibrated (taking geometry, energy losses of the alpha particles from the calibration source, etc. into account) and front-back-matched (in the case of DSSDs) energy spectra for all detectors of the setup.
+The prerequisites for creating these ***sorted files*** is the `Sorter` tool (located [here](https://gitlab.au.dk/ausa/sorter)) which takes a setup file, `setup/setup.json`, a matcher file, `matcher.json`, and the ***unpacked files*** contained in `data/unpacked`.
+The setup file, apart from specifying the geometry of the setup, points to files containing calibration coefficients `setup/*.cal`.
+Data files in `data/unpacked` have signature `XXX_YYY.root`.
+These files are created by running the ***raw files*** contained in `data/raw` through our unpacker. Redoing the unpacking will hopefully not be necessary for you, the reader (but sorting the unpacked files might, if you are unhappy with the calibrations/geometry)!
+
+
+### Building the data analyses and/or simulations
+
+From the root of the project, run
+
+```shell
 mkdir build
 cd build
 cmake ..
-```
-
-CMake will complain if you have a piece of software missing and/or if you do not appear 
-to be in possession of the relevant data files.
-Inspect the CMake files (they are written to be quite understandable) which give any 
-errors and follow the instructions of the error messages.
-
-CMake is made to take care of *sorting* the unpacked data files for you.
-
-When that is done, from within the **build directory**, do
-
-```shell
 cmake --build .
 ```
 
-## Order of proceedings
+## Running the data analyses
 
-*Alternate title: "The order of logical steps through the data analysis"*
+From within the `build` directory, locate the executable `bp` and run it, like so
 
-Each step is contained within the following relative paths/files:
+```shell
+./bp <path/to/libconfig++/configuration/file> <run number>
+```
 
-1. [matcher_checks/checks.md](matcher_checks/checks.md)
-2. Coming soon!
+There are example configuration files in `analysis/*.cfg` -- at least one configuration file per type of analysis.
 
-## Note
+## Running the simulations
 
-Where any reference to a file by the name `all.root` (e.g. in a Jupyter Notebook) appears, 
-this file has been created by running `hadd -f all.root 21Mg_*` in the relevant data 
-output directory.
-This command simply concatenates all input files `21Mg_*` into the output file `all.root`.
+TODO.
+
+## Elog
+
+Elog for the experiment is [here](https://elog.kern.phys.au.dk/e21010/).

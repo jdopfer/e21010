@@ -4,7 +4,7 @@ cmake-*
 .projectroot
 .ipynb_checkpoints
 __pycache__
-data/unpacked
+data
 
 data/**/*.root
 

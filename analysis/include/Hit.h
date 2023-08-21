@@ -3,12 +3,12 @@
 
 #include <TVector3.h>
 #include <TLorentzVector.h>
-#include "IS507Detector.h"
+#include "E21010Detector.h"
 
 using namespace IS507;
 
 struct Hit {
-  IS507Detector* det;
+  E21010Detector* det;
 
   unsigned short id;
 
