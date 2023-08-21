@@ -8,9 +8,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "-30.759mm",
+        "x": "-29.978mm",
         "y": "-0.15mm",
-        "z": "-30.759mm"
+        "z": "-29.978mm"
       },
       "normal": {
         "x": "1mm",
@@ -44,9 +44,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "-30.759mm",
+        "x": "-29.988mm",
         "y": "-0.15mm",
-        "z": "30.759mm"
+        "z": "29.988mm"
       },
       "normal": {
         "x": "1mm",
@@ -80,9 +80,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "30.759mm",
+        "x": "29.978mm",
         "y": "-0.15mm",
-        "z": "30.759mm"
+        "z": "29.978mm"
       },
       "normal": {
         "x": "-1mm",
@@ -116,9 +116,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "28.7mm",
-        "y": "-0.9mm",
-        "z": "-28.7mm"
+        "x": "29.825mm",
+        "y": "1.85mm",
+        "z": "-29.825mm"
       },
       "normal": {
         "x": "-1mm",
@@ -152,9 +152,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "0mm",
-        "y": "45mm",
-        "z": "0mm"
+        "x": "-1.442mm",
+        "y": "40.518mm",
+        "z": "1.442mm"
       },
       "normal": {
         "x": "0mm",
@@ -188,9 +188,9 @@
       "reverseFront": false,
       "reverseBack": false,
       "position": {
-        "x": "0mm",
-        "y": "-45mm",
-        "z": "0mm"
+        "x": "1.442mm",
+        "y": "-41.453mm",
+        "z": "-1.442mm"
       },
       "normal": {
         "x": "0mm",
