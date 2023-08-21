@@ -4,9 +4,13 @@
 /G4Sim/targetFile targets/target.json
 /G4Sim/targetHolderFile targets/targetholder.json
 /G4Sim/outputFile ../data/unpacked_sim/junk.root
+/G4Sim/target/position 0. 0. -0.3 mm
+
+/G4Sim/isotropic/implantationDepth 41.5 nm
+/G4Sim/isotropic/position 2. -2. 0. mm
 /G4Sim/isotropic/particle p
 /G4Sim/isotropic/energy 1.5 MeV
-/G4Sim/isotropic/implantationDepth 41.5 nm
+
 /G4Sim/simType isotropic
 
 # Make all units quiet -- turn up verbosity (1, 2, 3) to track issues

@@ -19,3 +19,5 @@ fonts*
 *.dat
 *.png
 !**/images/*.png
+
+sim/res/macros/tmp
