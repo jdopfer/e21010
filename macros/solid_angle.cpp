@@ -13,14 +13,6 @@ using namespace std;
 using namespace AUSA;
 using namespace EUtil;
 
-/*
- * In ROOT forum threads, the attitude from ~2007-2017 has been that "merging trees horizontally" is not supported and
- * should not be supported. In a post from 2020 or 2021, which I, for the life of me, cannot find again, Rene Brun or
- * similar wrote that "merging trees horizontally" is not supported *yet*.
- * So keep an eye on the release notes of ROOT versions > 6.24.
- * Until then, this boilerplate code does the job, but the branches have to be hardcoded.
- */
-
 UInt_t mul{};
 unique_ptr<DynamicBranchVector<double>> E;
 unique_ptr<DynamicBranchVector<unsigned short>> FI, BI, id;
