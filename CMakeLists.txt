@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 project(e21010)
 
+find_package(GSL REQUIRED)
 find_package(ROOT REQUIRED)
 find_package(AUSALIB REQUIRED) # https://gitlab.au.dk/ausa/ausalib
 find_package(telescope REQUIRED) # https://gitlab.au.dk/ausa/erik/telescope
@@ -23,5 +24,6 @@ endif()
 include_directories(include)
 # Parse CMakeLists.txt files in subdirectories
 add_subdirectory(analysis)
+#add_subdirectory(beamspot)
 add_subdirectory(macros)
 add_subdirectory(sim)

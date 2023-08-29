@@ -1,8 +1,11 @@
 #include <libconfig.h++>
+
 #include "projectutil.h"
 #include "Hit.h"
-#include "analysisIO.h"
+#include "analysisConfig.h"
 #include "E21010GeneralAnalysis.h"
+
+#include <gsl/gsl_vector.h>
 
 #include <TROOT.h>
 
@@ -25,10 +28,10 @@ class DeltaEContainedAnalysis : public E21010GeneralAnalysis {
 public:
   DeltaEContainedAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                           string twoPdaughter="20Ne",
-                          bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                          bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                           bool include_beta_region=false, bool include_spurious_zone=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
@@ -62,10 +65,10 @@ class BananaExplorativeAnalysis : public E21010GeneralAnalysis {
 public:
   BananaExplorativeAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                             string twoPdaughter="20Ne",
-                            bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                            bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                             bool include_beta_region=false, bool include_spurious_zone=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
@@ -87,7 +90,7 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case Clover:
+        case HPGe:
           // todo
           // treatOutsideHit(&hit);
           // addCloverHit(&hit);
@@ -131,10 +134,10 @@ class FinalAnalysis : public E21010GeneralAnalysis {
 public:
   FinalAnalysis(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                 string twoPdaughter="20Ne",
-                            bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                            bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                             bool include_beta_region=false, bool include_spurious_zone=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
@@ -156,7 +159,7 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case Clover:
+        case HPGe:
           addGermaniumHit(&hit);
           break;
         case NoType:
@@ -201,10 +204,10 @@ class GammaGatedProtons : public E21010GeneralAnalysis {
 public:
   GammaGatedProtons(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                     string twoPdaughter="20Ne",
-                bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                 bool include_beta_region=false, bool include_spurious_zone=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, include_spurious_zone) {}
 
   void specificAnalysis() override {
@@ -216,7 +219,7 @@ public:
     for (auto &hit : hits) {
       auto det = hit.det;
       switch (det->getType()) {
-        case Clover:
+        case HPGe:
           good_gamma = GammaGate(&hit, Emin, Emax);
           if (good_gamma) addGermaniumHit(&hit);
           success_any = good_gamma;
@@ -244,7 +247,7 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case Clover:
+        case HPGe:
           // todo
           // treatOutsideHit(&hit);
           // addCloverHit(&hit);
@@ -291,11 +294,36 @@ class TwoProton : public E21010GeneralAnalysis {
 public:
   TwoProton(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
             string twoPdaughter="20Ne",
-                    bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                    bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                     bool include_beta_region=false, bool include_spurious_zone=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
-                                  include_beta_region, include_spurious_zone) {}
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
+                                  include_beta_region, include_spurious_zone) {
+    /*
+    gsl_vector *theta, *omega;
+
+    string saPrefix = getProjectRoot() + "/data/solid_angle/2p_";
+    string saSuffix = ".dat";
+    string path = saPrefix + "theta" + saSuffix;
+    FILE *input = fopen(path.c_str(), "r");
+    int success = gsl_vector_fscanf(input, theta);
+    if (success != 0) {
+      cerr << "Could not read 2p theta distribution from file " << path << endl
+           << "Aborting." << endl;
+      abort();
+    }
+    fclose(input);
+    path = saPrefix + "omega" + saSuffix;
+    input = fopen(path.c_str(), "r");
+    success = gsl_vector_fscanf(input, omega);
+    if (success != 0) {
+      cerr << "Could not read 2p omega distribution from file " << path << endl
+           << "Aborting." << endl;
+      abort();
+    }
+    fclose(input);
+     */
+  }
 
   void specificAnalysis() override {
     if (hits.empty()) return;
@@ -378,7 +406,7 @@ public:
     for (auto &hit : hits) {
       auto det = hit.det;
       switch (det->getType()) {
-        case Clover:
+        case HPGe:
           addGermaniumHit(&hit);
           break;
         default:
@@ -387,16 +415,19 @@ public:
       }
     }
   }
+
+private:
+  map<gsl_vector*, gsl_vector*> theta_to_omega_map;
 };
 
 class Alphas : public E21010GeneralAnalysis {
 public:
   Alphas(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                           string twoPdaughter="20Ne",
-                          bool exclude_clovers=false, bool exclude_U5=false, bool include_dsd_rim=false,
+                          bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
                           bool include_beta_region=false)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
-                                  exclude_clovers, exclude_U5, include_dsd_rim,
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, true) {}
 
   void specificAnalysis() override {
@@ -427,17 +458,16 @@ public:
 
 // parallel -u ./bp ../../analysis/bp/alphas.cfg ::: $( seq 45 52 ; seq 55 59 ; seq 61 63 )
 int main(int argc, char *argv[]) {
-  prepareFileIO(getProjectRoot() + "/analysis/bp/" + getBasename(argv[1]));
+  prepareFileIO(getProjectRoot() + "/analysis/" + getBasename(argv[1]));
   auto setup = JSON::readSetupFromJSON(setup_path);
   auto target = make_shared<Target>(JSON::readTargetFromJSON(target_path));
 
   vector<string> input;
   int run;
 
-  for (int i = 2; i < argc; i++) {
-    run = stoi(argv[i]);
-    findFilesMatchingWildcard(Form(input_path.c_str(), run), input);
-  }
+  run = stoi(argv[2]);
+  prepareAnalysis(run);
+  findFilesMatchingWildcard(Form(input_path.c_str(), run), input);
 
   system(("mkdir -p " + output_dir).c_str());
   for (auto &in : input) {
@@ -455,37 +485,39 @@ int main(int argc, char *argv[]) {
     if (specificAnalysis == "DeltaEContained") {
       analysis =
               make_shared<DeltaEContainedAnalysis>(setup, target, &output, implantation_depth, twoPDaughter,
-                                                   exclude_clovers, exclude_U5, include_dsd_rim,
+                                                   exclude_hpges, exclude_U5, include_dsd_rim,
                                                    include_beta_region, include_spurious_zone);
     } else if (specificAnalysis == "BananaExplorative") {
       analysis =
               make_shared<BananaExplorativeAnalysis>(setup, target, &output, implantation_depth, twoPDaughter,
-                                                     exclude_clovers, exclude_U5, include_dsd_rim,
+                                                     exclude_hpges, exclude_U5, include_dsd_rim,
                                                      include_beta_region, include_spurious_zone);
     } else if (specificAnalysis == "Final") {
       analysis =
               make_shared<FinalAnalysis>(setup, target, &output, implantation_depth, twoPDaughter,
-                                                     exclude_clovers, exclude_U5, include_dsd_rim,
-                                                     include_beta_region, include_spurious_zone);
+                                         exclude_hpges, exclude_U5, include_dsd_rim,
+                                         include_beta_region, include_spurious_zone);
     } else if (specificAnalysis == "GammaGatedProtons") {
       analysis =
               make_shared<GammaGatedProtons>(setup, target, &output, implantation_depth, twoPDaughter,
-                                         exclude_clovers, exclude_U5, include_dsd_rim,
-                                         include_beta_region, include_spurious_zone);
+                                             exclude_hpges, exclude_U5, include_dsd_rim,
+                                             include_beta_region, include_spurious_zone);
     } else if (specificAnalysis == "TwoProton") {
       analysis =
               make_shared<TwoProton>(setup, target, &output, implantation_depth, twoPDaughter,
-                                             exclude_clovers, exclude_U5, include_dsd_rim,
-                                             include_beta_region, include_spurious_zone);
+                                     exclude_hpges, exclude_U5, include_dsd_rim,
+                                     include_beta_region, include_spurious_zone);
     } else if (specificAnalysis == "Alphas") {
       analysis =
               make_shared<Alphas>(setup, target, &output, implantation_depth, twoPDaughter,
-                                     exclude_clovers, exclude_U5, include_dsd_rim,
-                                     include_beta_region);
+                                  exclude_hpges, exclude_U5, include_dsd_rim,
+                                  include_beta_region);
     } else {
       cerr << "Unknown analysis type. Aborting!" << endl;
       abort();
     }
+
+    printConfig();
 
     cout << "Reading from: " << in << endl;
     cout << "Printing to:  " << outfile << endl;

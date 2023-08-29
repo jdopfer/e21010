@@ -5,7 +5,7 @@
 #include "projectutil.h"
 #include "Hit.h"
 #include "E21010Detector.h"
-#include "analysisIO.h"
+#include "analysisConfig.h"
 #include "E21010GeneralAnalysis.h"
 
 #include <TROOT.h>
@@ -40,17 +40,22 @@ class E21010GeneralAnalysis : public AbstractSortedAnalyzer {
 public:
   E21010GeneralAnalysis(const shared_ptr<Setup> &setupSpec, const shared_ptr<Target> &target, TFile *output,
                         double implantation_depth, string twoPdaughter="20Ne",
-                        bool exclude_clovers = false, bool exclude_U5 = false, bool include_dsd_rim = false,
+                        bool exclude_hpges = false, bool exclude_U5 = false, bool include_dsd_rim = false,
                         bool include_beta_region = false, bool include_spurious_zone=false)
       : setupSpec(setupSpec), target(target), implantation_depth(implantation_depth),
-        exclude_clovers(exclude_clovers), exclude_U5(exclude_U5), include_dsd_rim(include_dsd_rim),
+        exclude_hpges(exclude_hpges), exclude_U5(exclude_U5), include_dsd_rim(include_dsd_rim),
         include_beta_region(include_beta_region), include_spurious_zone(include_spurious_zone), twoPD_string(twoPdaughter) {
 
     origin = target->getCenter() - (implantation_depth - target->getThickness()/2.)*target->getNormal();
 
-    auto U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec, 350.);
-    auto U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec, 350.);
-    auto U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec, 350.);
+    string samPrefix = getProjectRoot() + "/data/solid_angle/";
+    string samSuffix = "_solid_angle.dat";
+    auto U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec,
+                                 350., samPrefix + "U1" + samSuffix);
+    auto U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec,
+                                 350., samPrefix + "U2" + samSuffix);
+    auto U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec,
+                                 350., samPrefix + "U3" + samSuffix);
     auto U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec, 800.);
     auto U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec, 1700.);
     auto U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec, 350.);
@@ -60,8 +65,8 @@ public:
     auto P4 = new E21010Detector(9, "P4", Pad, Alpha, setupSpec);
     auto P5 = new E21010Detector(10, "P5", Pad, Alpha, setupSpec); // dead!
     auto P6 = new E21010Detector(11, "P6", Pad, Alpha, setupSpec);
-    auto G1 = new E21010Detector(12, "G1", Clover, Gamma, setupSpec);
-    auto G2 = new E21010Detector(13, "G2", Clover, Gamma, setupSpec);
+    auto G1 = new E21010Detector(12, "G1", HPGe, Gamma, setupSpec);
+    auto G2 = new E21010Detector(13, "G2", HPGe, Gamma, setupSpec);
 
     makePartners(U1, P1);
     makePartners(U2, P2);
@@ -170,7 +175,7 @@ public:
 
   void findHits() {
     for (const auto &det: detectors) {
-      if (exclude_clovers && det->getType() == Clover) continue;
+      if (exclude_hpges && det->getType() == HPGe) continue;
       if (exclude_U5 && det->getName() == "U5") continue;
 
       auto type = det->getType();
@@ -181,7 +186,7 @@ public:
         case Pad:
           findPadHit(det);
           break;
-        case Clover:
+        case HPGe:
           findGermaniumHit(det);
           break;
         case NoType:
@@ -242,6 +247,9 @@ public:
   }
 
   void findPadHit(E21010Detector *detector) {
+    // P5 is dead :-(
+    if (detector->getName() == "P5") return;
+
     unsigned short id = detector->getId();
     auto &o = output.getSingleOutput(detector->getName());
     auto &d = o.detector();
@@ -582,7 +590,7 @@ public:
   double implantation_depth;
   TVector3 origin;
 
-  bool exclude_clovers, exclude_U5, include_dsd_rim, include_beta_region, include_spurious_zone;
+  bool exclude_hpges, exclude_U5, include_dsd_rim, include_beta_region, include_spurious_zone;
 
   TelescopeTabulation *pU1P1, *pU2P2, *pU3P3, *pU4P4, *pU6P6;
   TelescopeTabulation *aU1P1, *aU2P2, *aU3P3, *aU4P4, *aU6P6;
