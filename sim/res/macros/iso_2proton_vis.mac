@@ -10,9 +10,9 @@
 /G4Sim/isotropic/position 0. -2.0 0. mm
 /G4Sim/isotropic/particle p
 /G4Sim/isotropic/energy 1.5 MeV
+/G4Sim/isotropic/twoParticle/openingAngle 90 deg
 
-
-/G4Sim/simType isotropic
+/G4Sim/simType isotropicTwoParticle
 
 # Make all units quiet -- turn up verbosity (1, 2, 3) to track issues
 /control/verbose 0
