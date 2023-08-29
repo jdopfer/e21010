@@ -8,6 +8,7 @@
 #include <iostream>
 #include <gsl/gsl_matrix.h>
 #include <ausa/json/IO.h>
+#include <fstream>
 #include "projectutil.h"
 
 using namespace std;
@@ -27,8 +28,9 @@ void clear() {
   );
 }
 
-void print_matrix(const string& desc, gsl_matrix* matrix) {
-  cout << "# " << desc << endl;
+void print_matrix(const string& filename, gsl_matrix* matrix) {
+  ofstream out(filename);
+  cout.rdbuf(out.rdbuf());
   cout << "# ";
   for (int j = 0; j < matrix->size2; j++) {
     cout << j + 1 << "\t";
@@ -61,14 +63,19 @@ int main(int argc, char **argv) {
   typedef struct detector {
     string name;
     UInt_t id;
+    string cut;
   } detector;
 
   const vector<detector> detectors = {
-      {"U1", 0}, {"U2", 1}, {"U3", 2}
+      {"U1", 0, "bEdep > 1000"}, {"U2", 1, "bEdep > 1000"}, {"U3", 2, "bEdep > 1000"},
+      {"U4", 3, "E > 800"}, {"U5", 4, "E > 2000"}, {"U6", 5, "bEdep > 1000"},
   };
 
   shared_ptr<DoubleSidedDetector> detp;
   TVector3 pos;
+  string path = getProjectRoot() + "/data/pixel_matrices";
+  string prefix, suffix;
+  system(("mkdir -p " + path).c_str());
   for (const auto &det : detectors) {
     detp = setup->getDSSD(det.name);
     for (int i = 0; i < 16; i++) {
@@ -79,18 +86,18 @@ int main(int argc, char **argv) {
         gsl_matrix_set(z, i, j, pos.Z());
         gsl_matrix_set(r2, i, j, pos.Mag2());
         gsl_matrix_set(N, i, j, t1->GetEntries(("FI == " + to_string(i+1) +
-                                                                " && BI == " + to_string(j+1) +
-                                                                " && id == " + to_string(det.id) +
-                                                                " && bEdep > 1000").c_str()));
+                                            " && BI == " + to_string(j+1) +
+                                            " && id == " + to_string(det.id) +
+                                            " && "       + det.cut).c_str()));
       }
     }
-    cout << "# Detector " << det.name << endl;
-    print_matrix("x",  x);
-    print_matrix("y",  y);
-    print_matrix("z",  z);
-    print_matrix("r2", r2);
-    print_matrix("N",  N);
-    cout << endl << endl << endl;
+    prefix = path + "/" + det.name;
+    suffix = ".dat";
+    print_matrix(prefix + "x" + suffix,  x);
+    print_matrix(prefix + "y" + suffix,  y);
+    print_matrix(prefix + "z" + suffix,  z);
+    print_matrix(prefix + "r2" + suffix, r2);
+    print_matrix(prefix + "N" + suffix,  N);
   }
 
   return 0;
