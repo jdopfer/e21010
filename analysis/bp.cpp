@@ -299,10 +299,10 @@ public:
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
                                   exclude_hpges, exclude_U5, include_dsd_rim,
                                   include_beta_region, include_spurious_zone) {
-    /*
-    gsl_vector *theta, *omega;
-
-    string saPrefix = getProjectRoot() + "/data/solid_angle/2p_";
+    unsigned int num_thetas = 181; // TODO: read number of files in folder dynamically
+    theta = gsl_vector_calloc(num_thetas);
+    omega = gsl_vector_calloc(num_thetas);
+    string saPrefix = getProjectRoot() + "/data/oa_vs_sa/";
     string saSuffix = ".dat";
     string path = saPrefix + "theta" + saSuffix;
     FILE *input = fopen(path.c_str(), "r");
@@ -322,7 +322,6 @@ public:
       abort();
     }
     fclose(input);
-     */
   }
 
   void specificAnalysis() override {
@@ -399,8 +398,17 @@ public:
     double E2 = twoPHits[1]->E;
     double Theta = twoPHits[0]->dir.Angle(twoPHits[1]->dir);
     double Q2p = E1 + E2 + PROTON_MASS*(E1 + E2 + 2*sqrt(E1*E2)*cos(Theta))/twoPDaughter.getMass();
+    double scale = 0.;
+    double absdiff = INFINITY;
+    for (int i = 0; i < theta->size; i++) {
+      if (abs(gsl_vector_get(theta, i)*TMath::DegToRad() - Theta) < absdiff) {
+        absdiff = abs(gsl_vector_get(theta, i)*TMath::DegToRad() - Theta);
+        scale = gsl_vector_get(omega, i);
+      }
+    }
+
     for (auto hit : twoPHits) {
-      addTwoProtonHit(hit, Q2p, Theta);
+      addTwoProtonHit(hit, Q2p, Theta, scale);
     }
     
     for (auto &hit : hits) {
@@ -417,7 +425,8 @@ public:
   }
 
 private:
-  map<gsl_vector*, gsl_vector*> theta_to_omega_map;
+  gsl_vector* theta;
+  gsl_vector* omega;
 };
 
 class Alphas : public E21010GeneralAnalysis {
@@ -456,7 +465,8 @@ public:
   }
 };
 
-// parallel -u ./bp ../../analysis/bp/alphas.cfg ::: $( seq 45 52 ; seq 55 59 ; seq 61 63 )
+// parallel -u ./bp ../../analysis/b2p.cfg ::: $( seq 30 35 ; seq 40 40 ; seq 45 52 ; seq 55 55 ; seq 57 59 ; seq 61 61 ; seq 63 74 )
+// parallel -u ./bp ../../analysis/b2p.cfg ::: $( seq 79 82 ; seq 84 97 ; seq 103 118 )
 int main(int argc, char *argv[]) {
   prepareFileIO(getProjectRoot() + "/analysis/" + getBasename(argv[1]));
   auto setup = JSON::readSetupFromJSON(setup_path);

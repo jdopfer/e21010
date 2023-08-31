@@ -11,7 +11,7 @@
 
 std::string get2PDaughter(unsigned int runNumber) {
   switch (runNumber) {
-    // 22Al
+    // 22Al $( seq 30 35 ; seq 40 40 ; seq 45 52 ; seq 55 55 ; seq 57 59 ; seq 61 61 ; seq 63 74 )
     case 30 ... 35:   // < 30 mins low rate with different molecules, then 21Mg overnight
       return "20Ne";
     case 40:          // 7 min., then beam tuning
@@ -29,7 +29,7 @@ std::string get2PDaughter(unsigned int runNumber) {
     case 63 ... 74:   // 15.8 hours
       return "20Ne";
 
-    // 26P
+    // 26P $( seq 79 82 ; seq 84 97 ; seq 103 118 )
     case 79 ... 82:   // ~30 mins with different molecules
       return "24Mg";
     case 84 ... 97:   // 15 hours, then 25Si contamination/background runs

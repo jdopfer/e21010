@@ -136,6 +136,7 @@ public:
 
     v_Q2p = make_unique<DynamicBranchVector<double>>(*tree, "Q2p", "mul");
     v_Theta = make_unique<DynamicBranchVector<double>>(*tree, "Theta", "mul");
+    v_ThetaNorm = make_unique<DynamicBranchVector<double>>(*tree, "ThetaNorm", "mul");
 
 //    tree->Branch("TPATTERN", &TPATTERN);
     //tree->Branch("TPROTONS", &TPROTONS);
@@ -443,6 +444,7 @@ public:
 
     v_Q2p->add(NAN);
     v_Theta->add(NAN);
+    v_ThetaNorm->add(NAN);
 
     mul++;
   }
@@ -474,6 +476,7 @@ public:
 
     v_Q2p->add(NAN);
     v_Theta->add(NAN);
+    v_ThetaNorm->add(NAN);
 
     mul++;
   }
@@ -505,11 +508,12 @@ public:
     
     v_Q2p->add(NAN);
     v_Theta->add(NAN);
+    v_ThetaNorm->add(NAN);
 
     mul++;
   }
 
-  void addTwoProtonHit(Hit *hit, double Q2p, double Theta) {
+  void addTwoProtonHit(Hit *hit, double Q2p, double Theta, double scale) {
     v_id->add(hit->id);
 
     v_dir->add(hit->dir);
@@ -536,6 +540,7 @@ public:
     
     v_Q2p->add(Q2p);
     v_Theta->add(Theta);
+    v_ThetaNorm->add(scale);
 
     mul++;
   }
@@ -554,7 +559,7 @@ public:
         *v_Edep, *v_fEdep, *v_bEdep,
         *v_FI, *v_BI, *v_FE, *v_BE, *v_FT, *v_BT,
         *v_E, *v_Ea, *v_Eg,
-        *v_Q2p, *v_Theta
+        *v_Q2p, *v_Theta, *v_ThetaNorm
     );
     hits.clear();
   }
@@ -573,7 +578,7 @@ public:
   unique_ptr<DynamicBranchVector<double>> v_FT, v_BT;
   unique_ptr<DynamicBranchVector<double>> v_E, v_Ea, v_Eg;
   unique_ptr<DynamicBranchVector<double>> v_Q2p;
-  unique_ptr<DynamicBranchVector<double>> v_Theta;
+  unique_ptr<DynamicBranchVector<double>> v_Theta, v_ThetaNorm;
 
   vector<Hit> hits;
 
