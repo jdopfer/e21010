@@ -51,14 +51,17 @@ public:
     string samPrefix = getProjectRoot() + "/data/solid_angle/";
     string samSuffix = "_solid_angle.dat";
     auto U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec,
-                                 350., samPrefix + "U1" + samSuffix);
+                                 200., samPrefix + "U1" + samSuffix);
     auto U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec,
-                                 350., samPrefix + "U2" + samSuffix);
+                                 200., samPrefix + "U2" + samSuffix);
     auto U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec,
-                                 350., samPrefix + "U3" + samSuffix);
-    auto U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec, 800.);
-    auto U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec, 1700.);
-    auto U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec, 350.);
+                                 200., samPrefix + "U3" + samSuffix);
+    auto U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec,
+                                 800.);
+    auto U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec,
+                                 1700.);
+    auto U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec,
+                                 200.);
     auto P1 = new E21010Detector(6, "P1", Pad, Alpha, setupSpec);
     auto P2 = new E21010Detector(7, "P2", Pad, Alpha, setupSpec);
     auto P3 = new E21010Detector(8, "P3", Pad, Alpha, setupSpec);
