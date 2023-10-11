@@ -46,7 +46,7 @@ public:
         exclude_hpges(exclude_hpges), exclude_U5(exclude_U5), include_dsd_rim(include_dsd_rim),
         include_beta_region(include_beta_region), include_spurious_zone(include_spurious_zone), twoPD_string(twoPdaughter) {
 
-    origin = target->getCenter() - (implantation_depth - target->getThickness()/2.)*target->getNormal();
+    origin = target->getCenter() + (target->getThickness() / 2. - implantation_depth) * target->getNormal();
 
     string samPrefix = getProjectRoot() + "/data/solid_angle/";
     string samSuffix = "_solid_angle.dat";
