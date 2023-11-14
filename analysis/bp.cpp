@@ -8,6 +8,7 @@
 #include <gsl/gsl_vector.h>
 
 #include <TROOT.h>
+#include <Math/Interpolator.h>
 
 #include <ausa/json/IO.h>
 #include <ausa/setup/Target.h>
@@ -23,6 +24,9 @@ using namespace IS507;
 using namespace AUSA;
 using namespace AUSA::Sort;
 using namespace AUSA::EnergyLoss;
+
+using namespace ROOT::Math;
+using namespace ROOT::Math::Interpolation;
 
 class DeltaEContainedAnalysis : public E21010GeneralAnalysis {
 public:
@@ -205,24 +209,29 @@ public:
   GammaGatedProtons(const shared_ptr<Setup>& setupSpec, const shared_ptr<Target>& target, TFile *output, double implantation_depth,
                     string twoPdaughter="20Ne",
                 bool exclude_hpges=false, bool exclude_U5=false, bool include_dsd_rim=false,
-                bool include_beta_region=false, bool include_spurious_zone=false)
+                bool include_beta_region=false, bool include_spurious_zone=false,
+                double Emin=0., double Emax=INFINITY)
           : E21010GeneralAnalysis(setupSpec, target, output, implantation_depth, twoPdaughter,
                                   exclude_hpges, exclude_U5, include_dsd_rim,
-                                  include_beta_region, include_spurious_zone) {}
+                                  include_beta_region, include_spurious_zone) {
+    this->Emin = Emin;
+    this->Emax = Emax;
+  }
 
   void specificAnalysis() override {
     if (hits.empty()) return;
     
     double Emin = 1355.; double Emax = 1380.;
     bool success_any = false;
-    bool good_gamma = false;
+    bool good_gamma;
     for (auto &hit : hits) {
       auto det = hit.det;
       switch (det->getType()) {
         case HPGe:
-          good_gamma = GammaGate(&hit, Emin, Emax);
-          if (good_gamma) addGermaniumHit(&hit);
-          success_any = good_gamma;
+          good_gamma = GammaGate(hit.Eg, Emin, Emax);
+          if (good_gamma) {
+            success_any = true;
+          }
           break;
         default:
           // do nothing
@@ -248,9 +257,7 @@ public:
           telescope_back_candidates.emplace(&hit);
           break;
         case HPGe:
-          // todo
-          // treatOutsideHit(&hit);
-          // addCloverHit(&hit);
+          addGermaniumHit(&hit);
           break;
         case NoType:
           // skip
@@ -288,6 +295,8 @@ public:
       addDssdHit(hit);
     }
   }
+private:
+  double Emin, Emax;
 };
 
 class TwoProton : public E21010GeneralAnalysis {
@@ -322,6 +331,8 @@ public:
       abort();
     }
     fclose(input);
+
+    interp.SetData(num_thetas, theta->data, omega->data);
   }
 
   void specificAnalysis() override {
@@ -383,7 +394,9 @@ public:
         proton_events++;
       }
     }
-    
+
+//    if (proton_events > 2) cout << proton_events << "\t" << endl;
+
     if (proton_events != 2) return;
     
     vector<Hit*> twoPHits;
@@ -396,19 +409,14 @@ public:
     
     double E1 = twoPHits[0]->E;
     double E2 = twoPHits[1]->E;
-    double Theta = twoPHits[0]->dir.Angle(twoPHits[1]->dir);
-    double Q2p = E1 + E2 + PROTON_MASS*(E1 + E2 + 2*sqrt(E1*E2)*cos(Theta))/twoPDaughter.getMass();
-    double scale = 0.;
-    double absdiff = INFINITY;
-    for (int i = 0; i < theta->size; i++) {
-      if (abs(gsl_vector_get(theta, i)*TMath::DegToRad() - Theta) < absdiff) {
-        absdiff = abs(gsl_vector_get(theta, i)*TMath::DegToRad() - Theta);
-        scale = gsl_vector_get(omega, i);
-      }
-    }
+    Theta = twoPHits[0]->dir.Angle(twoPHits[1]->dir);
+    Q2p = E1 + E2 + PROTON_MASS*(E1 + E2 + 2*sqrt(E1*E2)*cos(Theta))/twoPDaughter.getMass();
+    Theta *= TMath::RadToDeg();
+    Omega = interp.Eval(Theta);
+
 
     for (auto hit : twoPHits) {
-      addTwoProtonHit(hit, Q2p, Theta, scale);
+      addTwoProtonHit(hit);
     }
     
     for (auto &hit : hits) {
@@ -427,6 +435,7 @@ public:
 private:
   gsl_vector* theta;
   gsl_vector* omega;
+  Interpolator interp = Interpolator(0, kAKIMA);
 };
 
 class Alphas : public E21010GeneralAnalysis {
@@ -511,7 +520,8 @@ int main(int argc, char *argv[]) {
       analysis =
               make_shared<GammaGatedProtons>(setup, target, &output, implantation_depth, twoPDaughter,
                                              exclude_hpges, exclude_U5, include_dsd_rim,
-                                             include_beta_region, include_spurious_zone);
+                                             include_beta_region, include_spurious_zone,
+                                             Egmin, Egmax);
     } else if (specificAnalysis == "TwoProton") {
       analysis =
               make_shared<TwoProton>(setup, target, &output, implantation_depth, twoPDaughter,

@@ -47,6 +47,8 @@ public:
         include_beta_region(include_beta_region), include_spurious_zone(include_spurious_zone), twoPD_string(twoPdaughter) {
 
     origin = target->getCenter() + (target->getThickness() / 2. - implantation_depth) * target->getNormal();
+    cout << "target center=(" << target->getCenter().X() << ", " << target->getCenter().Y() << ", " << target->getCenter().Z() << ")" << endl
+         << " implantation=(" << origin.X() << ", " << origin.Y() << ", " << origin.Z() << ")" << endl;
 
     string samPrefix = getProjectRoot() + "/data/solid_angle/";
     string samSuffix = "_solid_angle.dat";
@@ -74,7 +76,7 @@ public:
     makePartners(U1, P1);
     makePartners(U2, P2);
     makePartners(U3, P3);
-    //makePartners(U4, P4);
+    makePartners(U4, P4);
     makePartners(U6, P6);
     U1->setBananaCut(new gCut(getProjectRoot() + "/telescope/gcuts.root", "banana0", include_region));
     U2->setBananaCut(new gCut(getProjectRoot() + "/telescope/gcuts.root", "banana1", include_region));
@@ -85,23 +87,20 @@ public:
     pU1P1 = new TelescopeTabulation(setupSpec, target, "U1", "P1", "p");
     pU2P2 = new TelescopeTabulation(setupSpec, target, "U2", "P2", "p");
     pU3P3 = new TelescopeTabulation(setupSpec, target, "U3", "P3", "p");
-    //pU4P4 = new TelescopeTabulation(setupSpec, target, "U4", "P4", "p");
+    pU4P4 = new TelescopeTabulation(setupSpec, target, "U4", "P4", "p");
     pU6P6 = new TelescopeTabulation(setupSpec, target, "U6", "P6", "p");
+
     aU1P1 = new TelescopeTabulation(setupSpec, target, "U1", "P1", "a");
     aU2P2 = new TelescopeTabulation(setupSpec, target, "U2", "P2", "a");
     aU3P3 = new TelescopeTabulation(setupSpec, target, "U3", "P3", "a");
-    //aU4P4 = new TelescopeTabulation(setupSpec, target, "U4", "P4", "a");
+    aU4P4 = new TelescopeTabulation(setupSpec, target, "U4", "P4", "a");
     aU6P6 = new TelescopeTabulation(setupSpec, target, "U6", "P6", "a");
-    for (auto &tT : {pU1P1, pU2P2, pU3P3, 
-                     //pU4P4, 
-                     pU6P6, 
-                     aU1P1, aU2P2, aU3P3, 
-                     //aU4P4, 
-                     aU6P6}) tT->setImplantationDepth(implantation_depth);
+    for (auto &tT : {pU1P1, pU2P2, pU3P3, pU4P4, pU6P6,
+                     aU1P1, aU2P2, aU3P3, aU4P4, aU6P6}) tT->setImplantationDepth(implantation_depth);
     U1->addTelescopeTabulation(pU1P1); U1->addTelescopeTabulation(aU1P1);
     U2->addTelescopeTabulation(pU2P2); U2->addTelescopeTabulation(aU2P2);
     U3->addTelescopeTabulation(pU3P3); U3->addTelescopeTabulation(aU3P3);
-    //U4->addTelescopeTabulation(pU4P4); U4->addTelescopeTabulation(aU4P4);
+    U4->addTelescopeTabulation(pU4P4); U4->addTelescopeTabulation(aU4P4);
     U6->addTelescopeTabulation(pU6P6); U6->addTelescopeTabulation(aU6P6);
 
     detectors.insert({U1, U2, U3, U4, U5, U6, P1, P2, P3, P4, P5, P6, G1, G2});
@@ -137,12 +136,11 @@ public:
     v_Ea = make_unique<DynamicBranchVector<double>>(*tree, "Ea", "mul");
     v_Eg = make_unique<DynamicBranchVector<double>>(*tree, "Eg", "mul");
 
-    v_Q2p = make_unique<DynamicBranchVector<double>>(*tree, "Q2p", "mul");
-    v_Theta = make_unique<DynamicBranchVector<double>>(*tree, "Theta", "mul");
-    v_ThetaNorm = make_unique<DynamicBranchVector<double>>(*tree, "ThetaNorm", "mul");
+    tree->Branch("Q2p", &Q2p);
+    tree->Branch("Theta", &Theta);
+    tree->Branch("Omega", &Omega);
 
-//    tree->Branch("TPATTERN", &TPATTERN);
-    //tree->Branch("TPROTONS", &TPROTONS);
+    tree->Branch("pg", &pg);
     tree->Branch("CLOCK", &CLOCK);
 
     pSiCalc = defaultRangeInverter("p", "Silicon");
@@ -173,7 +171,10 @@ public:
     CLOCK = clock.getValue();
     findHits();
     specificAnalysis();
-    if (mul > 0) { tree->Fill(); }
+    if (mul > 0) {
+      pg = p && g;
+      tree->Fill();
+    }
     NUM++;
   }
 
@@ -295,11 +296,10 @@ public:
       hit.det = detector;
       hit.id = id;
 
-      hit.Edep = o.energy(i);
+      hit.Eg = o.energy(i);
 
       auto FI = o.segment(i);
       hit.FI = short(FI);
-      hit.FE = hit.Edep;
       hit.FT = o.time(i);
 
       TVector3 pos = d.getPosition(FI);
@@ -355,14 +355,8 @@ public:
     hit->E = E;
   }
 
-  bool GammaGate(Hit *hit, double Emin, double Emax) {
-    auto det = hit->det;
-    double E = hit->Edep;
-    if (Emin <= E && E <= Emax) {
-      return true;
-    } else {
-      return false;
-    }
+  static bool GammaGate(double E, double Emin, double Emax) {
+    return Emin <= E && E <= Emax;
   }
 
   bool treatTelescopeHit(Hit *front_hit, Hit *back_hit) {
@@ -445,11 +439,8 @@ public:
     v_Ea->add(hit->Ea);
     v_Eg->add(NAN);
 
-    v_Q2p->add(NAN);
-    v_Theta->add(NAN);
-    v_ThetaNorm->add(NAN);
-
     mul++;
+    p = true;
   }
 
   void addGermaniumHit(Hit *hit) {
@@ -462,26 +453,23 @@ public:
     v_phi->add(hit->phi);
     v_angle->add(hit->angle);
 
-    v_Edep->add(hit->Edep);
+    v_Edep->add(NAN);
     v_fEdep->add(NAN);
     v_bEdep->add(NAN);
 
     v_FI->add(hit->FI);
     v_BI->add(NAN_UINT);
-    v_FE->add(hit->FE);
-    v_BE->add(NAN_UINT);
+    v_FE->add(NAN);
+    v_BE->add(NAN);
     v_FT->add(hit->FT);
-    v_BT->add(NAN_UINT);
+    v_BT->add(NAN);
 
     v_E->add(NAN);
     v_Ea->add(NAN);
-    v_Eg->add(hit->Edep);
-
-    v_Q2p->add(NAN);
-    v_Theta->add(NAN);
-    v_ThetaNorm->add(NAN);
+    v_Eg->add(hit->Eg);
 
     mul++;
+    g = true;
   }
 
   void addTelescopeHit(Hit *front_hit, Hit *back_hit) {
@@ -508,15 +496,12 @@ public:
     v_E->add(front_hit->E);
     v_Ea->add(front_hit->Ea);
     v_Eg->add(NAN);
-    
-    v_Q2p->add(NAN);
-    v_Theta->add(NAN);
-    v_ThetaNorm->add(NAN);
 
     mul++;
+    p = true;
   }
 
-  void addTwoProtonHit(Hit *hit, double Q2p, double Theta, double scale) {
+  void addTwoProtonHit(Hit *hit) {
     v_id->add(hit->id);
 
     v_dir->add(hit->dir);
@@ -540,12 +525,9 @@ public:
     v_E->add(hit->E);
     v_Ea->add(NAN);
     v_Eg->add(NAN);
-    
-    v_Q2p->add(Q2p);
-    v_Theta->add(Theta);
-    v_ThetaNorm->add(scale);
 
     mul++;
+    p = true;
   }
 
   void terminate() override {
@@ -555,14 +537,15 @@ public:
 
   void clear() {
     mul = 0;
+    p = g = pg = false;
+    Q2p = Theta = Omega = NAN;
     AUSA::clear(
         *v_id,
         *v_dir, *v_pos,
         *v_theta, *v_phi, *v_angle,
         *v_Edep, *v_fEdep, *v_bEdep,
         *v_FI, *v_BI, *v_FE, *v_BE, *v_FT, *v_BT,
-        *v_E, *v_Ea, *v_Eg,
-        *v_Q2p, *v_Theta, *v_ThetaNorm
+        *v_E, *v_Ea, *v_Eg
     );
     hits.clear();
   }
@@ -572,6 +555,8 @@ public:
   TTree *tree;
   int NUM;
   UInt_t mul{}, TPATTERN{}, TPROTONS{}, CLOCK{};
+  Double_t Q2p, Theta, Omega;
+  Bool_t p, g, pg;
   unique_ptr<DynamicBranchVector<unsigned short>> v_id;
   unique_ptr<DynamicBranchVector<TVector3>> v_dir, v_pos;
   unique_ptr<DynamicBranchVector<double>> v_theta, v_phi, v_angle;
@@ -580,8 +565,6 @@ public:
   unique_ptr<DynamicBranchVector<double>> v_FE, v_BE;
   unique_ptr<DynamicBranchVector<double>> v_FT, v_BT;
   unique_ptr<DynamicBranchVector<double>> v_E, v_Ea, v_Eg;
-  unique_ptr<DynamicBranchVector<double>> v_Q2p;
-  unique_ptr<DynamicBranchVector<double>> v_Theta, v_ThetaNorm;
 
   vector<Hit> hits;
 

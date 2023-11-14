@@ -8,7 +8,6 @@
 #include <iostream>
 #include <gsl/gsl_matrix.h>
 #include "projectutil.h"
-#include <format>
 #include <iomanip>
 
 using namespace std;

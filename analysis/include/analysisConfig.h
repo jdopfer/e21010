@@ -21,6 +21,7 @@ bool exclude_hpges, exclude_U5, include_dsd_rim, include_beta_region, include_sp
 bool auto_2p_daughter;
 double implantation_depth;
 string twoPDaughter;
+double Egmin, Egmax;
 
 Config cfg;
 string path;
@@ -56,6 +57,9 @@ void prepareAnalysis(unsigned int run_number) {
   auto target = JSON::readTargetFromJSON(target_path);
   implantation_depth = cfg.exists("implantation_depth") ? cfg.lookup("implantation_depth") : 1e6*target.getThickness()/2.; // nm
   implantation_depth /= 1e6; // mm
+
+  Egmin = cfg.exists("Egmin") ? cfg.lookup("Egmin") : 0.; // keV
+  Egmax = cfg.exists("Egmax") ? cfg.lookup("Egmax") : INFINITY; // keV
 
   auto_2p_daughter = cfg.exists("auto_2p_daughter") && cfg.lookup("auto_2p_daughter");
   if (auto_2p_daughter) {
