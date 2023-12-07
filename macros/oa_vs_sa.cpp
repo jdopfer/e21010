@@ -9,6 +9,7 @@
 #include <gsl/gsl_matrix.h>
 #include "projectutil.h"
 #include <iomanip>
+#include <sstream>
 
 using namespace std;
 using namespace AUSA;

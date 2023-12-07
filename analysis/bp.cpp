@@ -406,7 +406,9 @@ public:
     for (auto hit : deltaE_contained) {
       twoPHits.emplace_back(hit);
     }
-    
+
+
+
     double E1 = twoPHits[0]->E;
     double E2 = twoPHits[1]->E;
     Theta = twoPHits[0]->dir.Angle(twoPHits[1]->dir);
