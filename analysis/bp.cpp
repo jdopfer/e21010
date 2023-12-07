@@ -94,13 +94,9 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case HPGe:
-          // todo
-          // treatOutsideHit(&hit);
-          // addCloverHit(&hit);
-          break;
-        case NoType:
-          // skip
+        default:
+          // if case is 'HPGe', the scalar Eg1 and/or Eg2 already contains the gamma energy and the boolean 'g' is set to 'true'
+          // do nothing
           break;
       }
     }
@@ -163,11 +159,9 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case HPGe:
-          addGermaniumHit(&hit);
-          break;
-        case NoType:
-          // skip
+        default:
+          // if case is 'HPGe', the scalar Eg1 and/or Eg2 already contains the gamma energy and the boolean 'g' is set to 'true'
+          // do nothing
           break;
       }
     }
@@ -220,23 +214,12 @@ public:
 
   void specificAnalysis() override {
     if (hits.empty()) return;
-    
-    double Emin = 1355.; double Emax = 1380.;
+
     bool success_any = false;
     bool good_gamma;
-    for (auto &hit : hits) {
-      auto det = hit.det;
-      switch (det->getType()) {
-        case HPGe:
-          good_gamma = GammaGate(hit.Eg, Emin, Emax);
-          if (good_gamma) {
-            success_any = true;
-          }
-          break;
-        default:
-          // do nothing
-          break;
-      }
+    for (auto &E : {Eg1, Eg2}) {
+      good_gamma = GammaGate(E, Emin, Emax);
+      if (good_gamma) success_any = true;
     }
     if (!success_any) return;
 
@@ -256,11 +239,9 @@ public:
         case Pad:
           telescope_back_candidates.emplace(&hit);
           break;
-        case HPGe:
-          addGermaniumHit(&hit);
-          break;
-        case NoType:
-          // skip
+        default:
+          // if case is 'HPGe', the scalar Eg1 and/or Eg2 already contains the gamma energy and the boolean 'g' is set to 'true'
+          // do nothing
           break;
       }
     }
@@ -355,6 +336,7 @@ public:
           }
           break;
         default:
+          // if case is 'HPGe', the scalar Eg1 and/or Eg2 already contains the gamma energy and the boolean 'g' is set to 'true'
           // do nothing
           break;
       }
@@ -420,18 +402,6 @@ public:
     for (auto hit : twoPHits) {
       addTwoProtonHit(hit);
     }
-    
-    for (auto &hit : hits) {
-      auto det = hit.det;
-      switch (det->getType()) {
-        case HPGe:
-          addGermaniumHit(&hit);
-          break;
-        default:
-          // do nothing
-          break;
-      }
-    }
   }
 
 private:
@@ -469,6 +439,7 @@ public:
           }
           break;
         default:
+          // if case is 'HPGe', the scalar Eg1 and/or Eg2 already contains the gamma energy and the boolean 'g' is set to 'true'
           // do nothing
           break;
       }

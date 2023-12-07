@@ -53,26 +53,26 @@ public:
 
     string samPrefix = getProjectRoot() + "/data/solid_angle/";
     string samSuffix = "_solid_angle.dat";
-    auto U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec,
+    U1 = new E21010Detector(0, "U1", DSSSD, Alpha, setupSpec,
                                  500., samPrefix + "U1" + samSuffix);
-    auto U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec,
+    U2 = new E21010Detector(1, "U2", DSSSD, Alpha, setupSpec,
                                  500., samPrefix + "U2" + samSuffix);
-    auto U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec,
+    U3 = new E21010Detector(2, "U3", DSSSD, Alpha, setupSpec,
                                  500., samPrefix + "U3" + samSuffix);
-    auto U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec,
+    U4 = new E21010Detector(3, "U4", DSSSD, Alpha, setupSpec,
                                  1000.);
-    auto U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec,
+    U5 = new E21010Detector(4, "U5", DSSSD, Alpha, setupSpec,
                                  2000.);
-    auto U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec,
+    U6 = new E21010Detector(5, "U6", DSSSD, Alpha, setupSpec,
                                  500.);
-    auto P1 = new E21010Detector(6, "P1", Pad, Alpha, setupSpec);
-    auto P2 = new E21010Detector(7, "P2", Pad, Alpha, setupSpec);
-    auto P3 = new E21010Detector(8, "P3", Pad, Alpha, setupSpec);
-    auto P4 = new E21010Detector(9, "P4", Pad, Alpha, setupSpec);
-    auto P5 = new E21010Detector(10, "P5", Pad, Alpha, setupSpec); // dead!
-    auto P6 = new E21010Detector(11, "P6", Pad, Alpha, setupSpec);
-    auto G1 = new E21010Detector(12, "G1", HPGe, Gamma, setupSpec);
-    auto G2 = new E21010Detector(13, "G2", HPGe, Gamma, setupSpec);
+    P1 = new E21010Detector(6, "P1", Pad, Alpha, setupSpec);
+    P2 = new E21010Detector(7, "P2", Pad, Alpha, setupSpec);
+    P3 = new E21010Detector(8, "P3", Pad, Alpha, setupSpec);
+    P4 = new E21010Detector(9, "P4", Pad, Alpha, setupSpec);
+    P5 = new E21010Detector(10, "P5", Pad, Alpha, setupSpec); // dead!
+    P6 = new E21010Detector(11, "P6", Pad, Alpha, setupSpec);
+    G1 = new E21010Detector(12, "G1", HPGe, Gamma, setupSpec);
+    G2 = new E21010Detector(13, "G2", HPGe, Gamma, setupSpec);
 
     makePartners(U1, P1);
     makePartners(U2, P2);
@@ -135,11 +135,13 @@ public:
 
     v_E = make_unique<DynamicBranchVector<double>>(*tree, "E", "mul");
     v_Ea = make_unique<DynamicBranchVector<double>>(*tree, "Ea", "mul");
-    v_Eg = make_unique<DynamicBranchVector<double>>(*tree, "Eg", "mul");
 
     tree->Branch("Q2p", &Q2p);
     tree->Branch("Theta", &Theta);
     tree->Branch("Omega", &Omega);
+
+    tree->Branch("Eg1", &Eg1);
+    tree->Branch("Eg2", &Eg2);
 
     tree->Branch("pg", &pg);
     tree->Branch("CLOCK", &CLOCK);
@@ -172,10 +174,8 @@ public:
     CLOCK = clock.getValue();
     findHits();
     specificAnalysis();
-    if (mul > 0) {
-      pg = p && g;
-      tree->Fill();
-    }
+    pg = p && g;
+    tree->Fill();
     NUM++;
   }
 
@@ -293,26 +293,14 @@ public:
     auto m = AUSA::mul(o);
 
     for (int i = 0; i < m; i++) {
-      Hit hit;
-      hit.det = detector;
-      hit.id = id;
-
-      hit.Eg = o.energy(i);
-
-      auto FI = o.segment(i);
-      hit.FI = short(FI);
-      hit.FT = o.time(i);
-
-      TVector3 pos = d.getPosition(FI);
-      hit.pos = pos;
-      TVector3 dir = (hit.pos - origin).Unit();
-      hit.dir = dir;
-
-      hit.theta = dir.Theta();
-      hit.phi = dir.Phi();
-      hit.angle = dir.Angle(-d.getNormal());
-
-      hits.emplace_back(std::move(hit));
+      if (id == G1->getId()) {
+        Eg1 = o.energy(i);
+        g = true;
+      }
+      if (id == G2->getId()) {
+        Eg2 = o.energy(i);
+        g = true;
+      }
     }
   }
 
@@ -438,39 +426,9 @@ public:
 
     v_E->add(hit->E);
     v_Ea->add(hit->Ea);
-    v_Eg->add(NAN);
 
     mul++;
     p = true;
-  }
-
-  void addGermaniumHit(Hit *hit) {
-    v_id->add(hit->id);
-
-    v_dir->add(hit->dir);
-    v_pos->add(hit->pos);
-
-    v_theta->add(hit->theta);
-    v_phi->add(hit->phi);
-    v_angle->add(hit->angle);
-
-    v_Edep->add(NAN);
-    v_fEdep->add(NAN);
-    v_bEdep->add(NAN);
-
-    v_FI->add(hit->FI);
-    v_BI->add(NAN_UINT);
-    v_FE->add(NAN);
-    v_BE->add(NAN);
-    v_FT->add(hit->FT);
-    v_BT->add(NAN);
-
-    v_E->add(NAN);
-    v_Ea->add(NAN);
-    v_Eg->add(hit->Eg);
-
-    mul++;
-    g = true;
   }
 
   void addTelescopeHit(Hit *front_hit, Hit *back_hit) {
@@ -496,7 +454,6 @@ public:
 
     v_E->add(front_hit->E);
     v_Ea->add(front_hit->Ea);
-    v_Eg->add(NAN);
 
     mul++;
     p = true;
@@ -525,7 +482,6 @@ public:
 
     v_E->add(hit->E);
     v_Ea->add(NAN);
-    v_Eg->add(NAN);
 
     mul++;
     p = true;
@@ -539,24 +495,25 @@ public:
   void clear() {
     mul = 0;
     p = g = pg = false;
-    Q2p = Theta = Omega = NAN;
+    Q2p = Theta = Omega = Eg1 = Eg2 = NAN;
     AUSA::clear(
         *v_id,
         *v_dir, *v_pos,
         *v_theta, *v_phi, *v_angle,
         *v_Edep, *v_fEdep, *v_bEdep,
         *v_FI, *v_BI, *v_FE, *v_BE, *v_FT, *v_BT,
-        *v_E, *v_Ea, *v_Eg
+        *v_E, *v_Ea
     );
     hits.clear();
   }
 
   unordered_set<E21010Detector *> detectors;
+  E21010Detector *U1, *U2, *U3, *U4, *U5, *U6, *P1, *P2, *P3, *P4, *P5, *P6, *G1, *G2;
 
   TTree *tree;
   int NUM;
   UInt_t mul{}, TPATTERN{}, TPROTONS{}, CLOCK{};
-  Double_t Q2p, Theta, Omega;
+  Double_t Q2p, Theta, Omega, Eg1, Eg2;
   Bool_t p, g, pg;
   unique_ptr<DynamicBranchVector<unsigned short>> v_id;
   unique_ptr<DynamicBranchVector<TVector3>> v_dir, v_pos;
@@ -565,7 +522,7 @@ public:
   unique_ptr<DynamicBranchVector<unsigned short>> v_FI, v_BI;
   unique_ptr<DynamicBranchVector<double>> v_FE, v_BE;
   unique_ptr<DynamicBranchVector<double>> v_FT, v_BT;
-  unique_ptr<DynamicBranchVector<double>> v_E, v_Ea, v_Eg;
+  unique_ptr<DynamicBranchVector<double>> v_E, v_Ea;
 
   vector<Hit> hits;
 
