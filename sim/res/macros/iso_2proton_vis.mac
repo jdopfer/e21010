@@ -9,7 +9,7 @@
 /G4Sim/isotropic/implantationDepth 41.5 nm
 /G4Sim/isotropic/position 0. -2.0 0. mm
 /G4Sim/isotropic/particle p
-/G4Sim/isotropic/energy 1.5 MeV
+/G4Sim/isotropic/energy 2.1 MeV # 2.1 MeV is 0.1 MeV below punch through of 55 um silicon and 0.1 MeV above beta threshold of 1000 um silicon
 /G4Sim/isotropic/twoParticle/openingAngle 90 deg
 
 /G4Sim/simType isotropicTwoParticle
